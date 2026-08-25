@@ -123,7 +123,7 @@ function Home() {
           </p>
           <div className="hero__actions">
             <Link to="/admissions" className="btn-pill btn-pill--yellow">Apply Now</Link>
-            <Link to="/about" className="btn-pill btn-pill--outline">Learn More</Link>
+            <Link to="/about/team" className="btn-pill btn-pill--outline">Learn More</Link>
           </div>
         </div>
 

@@ -1,0 +1,178 @@
+/* ── Page hero ───────────────────────────────────────── */
+
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  padding: 72px 0 80px;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(13, 71, 161, 0.92) 0%, rgba(21, 101, 192, 0.82) 100%),
+    url('/images/excursion.png') center 35% / cover no-repeat;
+}
+
+.page-hero .container { position: relative; z-index: 1; }
+.page-hero .section-label { color: var(--yellow); }
+.page-hero h1 { color: #fff; max-width: 20ch; }
+.page-hero p { color: rgba(255,255,255,0.8); font-size: 18px; max-width: 54ch; margin: 0; }
+
+/* ── Scroll-reveal utility ───────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Milestones strip ────────────────────────────────── */
+
+.milestones {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.milestones__inner {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.milestone {
+  text-align: center;
+  padding: 28px 16px;
+  border-right: 1px solid var(--border);
+}
+
+.milestone:last-child { border-right: none; }
+
+.milestone__number {
+  display: block;
+  font-family: var(--heading);
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--blue);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.milestone:nth-child(2) .milestone__number { color: var(--pink); }
+.milestone:nth-child(3) .milestone__number { color: #B88A00; }
+
+.milestone__label {
+  font-size: 13px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* ── History section ──────────────────────────────────── */
+
+.history {
+  padding: 88px 0;
+  background: var(--bg);
+}
+
+.history__header { text-align: center; margin-bottom: 64px; }
+.history__header p {
+  color: var(--text-light);
+  max-width: 52ch;
+  margin: 0 auto;
+}
+
+/* ── Timeline ────────────────────────────────────────── */
+
+.timeline {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-entry {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 32px 20px;
+  margin: 0 -20px;
+  border-bottom: 1px solid var(--border);
+  border-radius: 14px;
+  transition: background 0.25s ease;
+}
+
+.timeline-entry:last-child { border-bottom: none; }
+
+.timeline-entry:hover {
+  background: var(--surface);
+}
+
+.timeline-entry--yellow { --entry-color: #B88A00; }
+.timeline-entry--pink { --entry-color: var(--pink); }
+.timeline-entry--blue { --entry-color: var(--blue); }
+
+.timeline-entry__year {
+  flex-shrink: 0;
+  width: 130px;
+  font-family: var(--serif);
+  font-size: 42px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--entry-color);
+  transition: transform 0.3s ease;
+}
+
+.timeline-entry:hover .timeline-entry__year {
+  transform: translateX(6px);
+}
+
+.timeline-entry__body h4 { margin: 0 0 8px; font-size: 19px; }
+.timeline-entry__body p { margin: 0; font-size: 15px; color: var(--text-light); line-height: 1.7; }
+
+.history__gallery-cta {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 640px;
+  margin: 56px auto 0;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1.5px dashed var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.history__gallery-cta span { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.history__gallery-cta p { margin: 0; }
+.history__gallery-cta a { color: var(--blue); font-weight: 600; }
+
+/* ── Responsive ──────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .timeline-entry {
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 16px;
+    margin: 0 -16px;
+  }
+
+  .timeline-entry__year { font-size: 32px; }
+
+  .milestone__number { font-size: 22px; }
+}

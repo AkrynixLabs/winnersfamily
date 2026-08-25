@@ -1,0 +1,195 @@
+/* ── Page hero ───────────────────────────────────────── */
+
+.page-hero {
+  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
+  color: #fff;
+  padding: 72px 0 80px;
+}
+
+.page-hero .section-label { color: var(--yellow); }
+.page-hero h1 { color: #fff; max-width: 20ch; }
+.page-hero p { color: rgba(255,255,255,0.75); font-size: 18px; max-width: 54ch; margin: 0; }
+
+/* ── Scroll-reveal utility ───────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Leadership ──────────────────────────────────────── */
+
+.leadership {
+  padding: 88px 0;
+  background: var(--bg);
+}
+
+.leadership__header {
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto 48px;
+}
+
+.leadership__header p {
+  color: var(--text-light);
+  font-size: 16px;
+  margin: 0;
+}
+
+/* ── Spotlight cards (Founder / Headmistress) ────────── */
+
+.leadership__spotlight {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.spotlight-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 44px rgba(13, 27, 62, 0.12);
+}
+
+.spotlight-card__photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 3px solid var(--spotlight-accent);
+}
+
+.spotlight-card--yellow { --spotlight-accent: var(--yellow); }
+.spotlight-card--pink { --spotlight-accent: var(--pink); }
+
+.spotlight-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.spotlight-card__body h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.spotlight-card__role {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--spotlight-accent);
+  margin-bottom: 8px;
+}
+
+.spotlight-card--yellow .spotlight-card__role { color: #B88A00; }
+
+.spotlight-card__body p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ── Staff grid ──────────────────────────────────────── */
+
+.leadership__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.staff-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.staff-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(13, 27, 62, 0.1);
+}
+
+.staff-card__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-family: var(--heading);
+  font-weight: 800;
+  font-size: 17px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.staff-card--yellow .staff-card__avatar { background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-bright) 100%); color: var(--blue-deep); }
+.staff-card--pink .staff-card__avatar { background: linear-gradient(135deg, var(--pink) 0%, var(--pink-light) 100%); }
+.staff-card--blue .staff-card__avatar { background: linear-gradient(135deg, var(--blue) 0%, var(--blue-light) 100%); }
+
+.staff-card h4 { margin: 0 0 4px; font-size: 16px; }
+.staff-card p { font-size: 13px; color: var(--text-light); margin: 0; }
+
+/* ── CTA ─────────────────────────────────────────────── */
+
+.team-cta {
+  padding: 64px 0;
+  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
+  color: #fff;
+}
+
+.team-cta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.team-cta h2 { color: #fff; margin-bottom: 6px; }
+.team-cta p { color: rgba(255, 255, 255, 0.75); margin: 0; max-width: 48ch; }
+
+/* ── Responsive ──────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .leadership__spotlight { grid-template-columns: 1fr; }
+  .leadership__grid { grid-template-columns: 1fr 1fr; }
+  .team-cta__inner { text-align: center; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .spotlight-card { flex-direction: column; text-align: center; }
+  .leadership__grid { grid-template-columns: 1fr; }
+}
