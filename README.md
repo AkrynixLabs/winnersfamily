@@ -1,75 +1,53 @@
-# React + TypeScript + Vite
+# Winners Family School
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing site for Winners Family School — Crèche through JHS in
+Bulemin-Gbawe, Accra, Ghana. *Discipline · Power · Knowledge.*
 
-Currently, two official plugins are available:
+React + TypeScript single-page app, client-side routed, no backend or CMS —
+content lives directly in the page components.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- React 19 + TypeScript
+- Vite 8 (dev server, build)
+- react-router-dom 7 (client-side routing)
+- ESLint (flat config)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting started
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev       # dev server with HMR at http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the Vite dev server |
+| `npm run build` | Type-check (`tsc -b`) then build for production |
+| `npm run lint` | Run ESLint |
+| `npm run preview` | Serve the production build locally |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Structure
 
 ```
+src/
+  main.tsx            entry point, wraps App in BrowserRouter
+  App.tsx             route definitions
+  components/Layout   header/nav, footer, page chrome
+  pages/               one component (+ co-located CSS) per route
+  index.css            design tokens, resets, shared utility classes
+public/images/         school photography used across pages
+```
+
+Pages: Home, About, Academics, Admissions, Gallery, News, Contact.
+
+## Updating content
+
+There's no CMS — text, dates, and figures (fees, staff, term dates, etc.)
+are edited directly in the relevant `src/pages/*.tsx` file. New photos go in
+`public/images/` and are referenced by path from the page that uses them.
+
+See [CLAUDE.md](CLAUDE.md) for architecture notes, design conventions, and
+the commit message style used in this repo.
