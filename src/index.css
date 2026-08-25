@@ -1,64 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap');
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* Brand colours */
+  --blue: #1565C0;
+  --blue-deep: #0D47A1;
+  --blue-light: #1976D2;
+  --yellow: #F5C518;
+  --yellow-bright: #FFD740;
+  --yellow-muted: #FFF8DC;
+  --pink: #E91E63;
+  --pink-light: #F06292;
+  --pink-muted: #FCE4EC;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Neutral */
+  --text: #2D3142;
+  --text-light: #5A6070;
+  --text-h: #0D1B3E;
+  --bg: #F8F9FC;
+  --surface: #FFFFFF;
+  --border: #E0E4EF;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
+  /* Typography */
+  --sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: 'Poppins', system-ui, sans-serif;
+
+  font: 17px/1.65 var(--sans);
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+* {
   box-sizing: border-box;
 }
 
@@ -66,46 +42,150 @@ body {
   margin: 0;
 }
 
-h1,
-h2 {
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 1 auto;
+}
+
+/* ── Typography ──────────────────────────────────────── */
+
+h1, h2, h3, h4 {
   font-family: var(--heading);
-  font-weight: 500;
+  font-weight: 700;
   color: var(--text-h);
+  line-height: 1.15;
+  margin: 0 0 16px;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+h1 { font-size: clamp(36px, 5vw, 56px); letter-spacing: -1px; }
+h2 { font-size: clamp(26px, 3.5vw, 36px); letter-spacing: -0.5px; }
+h3 { font-size: 22px; }
+h4 { font-size: 17px; font-weight: 600; }
+
+p { margin: 0 0 16px; }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--blue); }
+
+/* ── Layout ──────────────────────────────────────────── */
+
+.container {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
+/* ── Buttons ─────────────────────────────────────────── */
+
+.btn {
   display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 6px;
+  font-family: var(--heading);
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-yellow {
+  background: var(--yellow);
+  color: var(--blue-deep);
+}
+.btn-yellow:hover { background: var(--yellow-bright); }
+
+.btn-pink {
+  background: var(--pink);
+  color: #fff;
+}
+.btn-pink:hover { background: var(--pink-light); }
+
+.btn-outline-white {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.btn-outline-white:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-outline-blue {
+  background: transparent;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+.btn-outline-blue:hover {
+  background: var(--blue);
+  color: #fff;
+}
+
+/* ── Section spacing ─────────────────────────────────── */
+
+.section { padding: 80px 0; }
+.section--sm { padding: 56px 0; }
+.section--lg { padding: 104px 0; }
+
+.section-label {
+  display: inline-block;
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 12px;
+}
+
+.section-label--yellow { color: var(--yellow); }
+.section-label--blue { color: var(--blue); }
+
+/* ── Cards ───────────────────────────────────────────── */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 32px rgba(21, 101, 192, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ── Pill / badge ────────────────────────────────────── */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pill--yellow { background: var(--yellow-muted); color: #7A6000; }
+.pill--pink { background: var(--pink-muted); color: var(--pink); }
+.pill--blue { background: #E3F0FF; color: var(--blue-deep); }
+
+/* ── Divider stripe ──────────────────────────────────── */
+
+.stripe {
+  height: 4px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--pink) 50%, var(--yellow) 100%);
 }
