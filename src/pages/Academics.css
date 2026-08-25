@@ -1,0 +1,176 @@
+/* ── Page hero ───────────────────────────────────────── */
+
+.page-hero {
+  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
+  color: #fff;
+  padding: 72px 0 80px;
+}
+
+.page-hero .section-label { color: var(--yellow); }
+.page-hero h1 { color: #fff; max-width: 22ch; }
+.page-hero p { color: rgba(255,255,255,0.75); font-size: 18px; max-width: 54ch; margin: 0; }
+
+/* ── Levels overview ─────────────────────────────────── */
+
+.levels-detail {
+  padding: 88px 0;
+  background: var(--bg);
+}
+
+.levels-detail__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin-top: 48px;
+}
+
+.level-detail {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  align-items: stretch;
+}
+
+.level-detail:nth-child(even) { direction: rtl; }
+.level-detail:nth-child(even) > * { direction: ltr; }
+
+.level-detail__sidebar {
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.level-detail__sidebar--yellow { background: var(--yellow); }
+.level-detail__sidebar--pink { background: var(--pink); color: #fff; }
+.level-detail__sidebar--blue { background: var(--blue); color: #fff; }
+
+.level-detail__sidebar .level-icon { font-size: 48px; margin-bottom: 16px; display: block; }
+
+.level-detail__sidebar h3 {
+  color: inherit;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.level-detail__sidebar--yellow h3 { color: var(--blue-deep); }
+
+.level-detail__range {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.level-detail__sidebar--yellow .level-detail__range { color: var(--blue-deep); opacity: 0.7; }
+
+.level-detail__body {
+  padding: 40px 40px 40px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.level-detail:nth-child(even) .level-detail__body { padding: 40px 0 40px 40px; }
+
+.level-detail__body p {
+  color: var(--text-light);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.subject-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.subject-tag {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.level-detail__img {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+
+.level-detail__img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Calendar ────────────────────────────────────────── */
+
+.academic-calendar {
+  padding: 88px 0;
+  background: var(--blue-deep);
+  color: #fff;
+}
+
+.academic-calendar .section-label { color: var(--yellow); }
+.academic-calendar h2 { color: #fff; margin-bottom: 8px; }
+.academic-calendar > .container > p {
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 48px;
+}
+
+.terms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.term-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 32px 28px;
+}
+
+.term-card__number {
+  font-family: var(--heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.term-card__number--yellow { color: var(--yellow); }
+.term-card__number--pink { color: var(--pink-light); }
+.term-card__number--blue { color: #90CAF9; }
+
+.term-card h3 { color: #fff; margin-bottom: 6px; }
+.term-card p { color: rgba(255,255,255,0.65); font-size: 14px; margin: 0; }
+
+/* ── Responsive ──────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .terms-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+@media (max-width: 768px) {
+  .level-detail { grid-template-columns: 1fr; }
+  .level-detail:nth-child(even) { direction: ltr; }
+  .level-detail__sidebar { padding: 28px; flex-direction: row; align-items: center; gap: 16px; }
+  .level-detail__sidebar .level-icon { margin-bottom: 0; font-size: 36px; }
+  .level-detail__body { padding: 0 24px 28px; }
+  .level-detail:nth-child(even) .level-detail__body { padding: 0 24px 28px; }
+}
