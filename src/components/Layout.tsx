@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useState } from 'react'
 import './Layout.css'
 
@@ -16,7 +16,6 @@ function Layout() {
 
   return (
     <>
-      <div className="top-stripe" />
       <header className="site-header">
         <div className="container site-header__inner">
           <NavLink to="/" className="brand">
@@ -51,6 +50,10 @@ function Layout() {
                 {link.label}
               </NavLink>
             ))}
+            <Link to="/contact" className="site-nav__cta" onClick={() => setNavOpen(false)}>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15c-1.146 0-2.229-.265-3.101-.729a5.99 5.99 0 0 1-1.436-1.032L1.5 14l.663-1.99A6.5 6.5 0 1 1 8 15z"/></svg>
+              Enquiries
+            </Link>
           </nav>
         </div>
       </header>
