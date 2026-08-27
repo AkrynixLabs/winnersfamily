@@ -37,11 +37,10 @@ function History() {
 
   return (
     <>
-      {/* ── Page hero ── */}
-      <section className="page-hero">
-        <div className="hero-bg" aria-hidden="true" />
+      {/* ── Page title ── */}
+      <section className="page-title">
         <div className="container">
-          <span className="section-label section-label--yellow">About Us</span>
+          <span className="section-label">About Us</span>
           <h1>Our History</h1>
           <p>
             From a small starting class in 2008 to a full Crèche-to-JHS institution — the story of Winners Family School.

@@ -23,8 +23,21 @@ const NAV_LINKS: NavEntry[] = [
       { to: '/about/mission-vision', label: 'Mission & Vision' },
     ],
   },
-  { to: '/academics', label: 'Academics' },
-  { to: '/admissions', label: 'Admissions' },
+  {
+    label: 'Academics',
+    children: [
+      { to: '/academics/early-years', label: 'Early Years' },
+      { to: '/academics/primary', label: 'Primary' },
+      { to: '/academics/jhs', label: 'Junior High School' },
+    ],
+  },
+  {
+    label: 'Admissions',
+    children: [
+      { to: '/admissions', label: 'Overview & Requirements' },
+      { to: '/admissions/apply', label: 'Start Application' },
+    ],
+  },
   { to: '/gallery', label: 'Gallery' },
   { to: '/news', label: 'News' },
   { to: '/contact', label: 'Contact' },

@@ -6,7 +6,7 @@
   padding: 48px 0 40px;
   position: relative;
   overflow: hidden;
-  min-height: 460px;
+  min-height: clamp(480px, 42vw, 760px);
   display: flex;
   align-items: center;
 }
@@ -710,13 +710,12 @@
 /* ── Responsive ──────────────────────────────────────── */
 
 @media (max-width: 900px) {
-  .hero { min-height: 420px; }
   .overview__inner { grid-template-columns: 1fr; gap: 48px; }
   .levels__grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 600px) {
-  .hero { padding: 44px 0 36px; min-height: 380px; }
+  .hero { padding: 44px 0 36px; }
   .hero__content { max-width: 100%; }
   .hero__overlay {
     background:

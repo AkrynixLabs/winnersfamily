@@ -122,7 +122,7 @@ function Home() {
             Winners Family School provides quality education from Crèche through JHS at Bulemin-Gbawe, Accra. Shaping confident, knowledgeable graduates since 2008.
           </p>
           <div className="hero__actions">
-            <Link to="/admissions" className="btn-pill btn-pill--yellow">Apply Now</Link>
+            <Link to="/admissions/apply" className="btn-pill btn-pill--yellow">Apply Now</Link>
             <Link to="/about/team" className="btn-pill btn-pill--outline">Learn More</Link>
           </div>
         </div>
@@ -307,7 +307,7 @@ function Home() {
             Admissions are open year-round. Term 1 intake begins in September — apply early to secure a place.
           </p>
           <div className="home-cta__actions">
-            <Link to="/admissions" className="btn btn-yellow">Start Application</Link>
+            <Link to="/admissions/apply" className="btn btn-yellow">Start Application</Link>
             <Link to="/contact" className="btn btn-outline-blue">Talk to Us First</Link>
           </div>
         </div>

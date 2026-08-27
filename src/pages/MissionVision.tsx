@@ -42,12 +42,10 @@ function MissionVision() {
 
   return (
     <>
-      {/* ── Page hero ── */}
-      <section className="page-hero">
-        <span className="page-hero__blob page-hero__blob--yellow" aria-hidden="true" />
-        <span className="page-hero__blob page-hero__blob--pink" aria-hidden="true" />
+      {/* ── Page title ── */}
+      <section className="page-title">
         <div className="container">
-          <span className="section-label section-label--yellow">About Us</span>
+          <span className="section-label">About Us</span>
           <h1>Mission &amp; Vision</h1>
           <p>
             The purpose and principles that guide Winners Family School, from our earliest years through Junior High School.
@@ -93,7 +91,7 @@ function MissionVision() {
         <span className="vision__blob" aria-hidden="true" />
         <div className="container vision__inner reveal">
           <span className="vision__quote-mark" aria-hidden="true">&ldquo;</span>
-          <span className="section-label section-label--yellow">Our Vision</span>
+          <span className="section-label section-label--blue">Our Vision</span>
           <h2 className="vision__title">Where We're Headed</h2>
           <p className="vision__body">
             To be the leading community school in Bulemin-Gbawe, recognised for producing disciplined, knowledgeable graduates who go on to lead with confidence — in further education, their careers, and their communities.

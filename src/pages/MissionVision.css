@@ -1,41 +1,19 @@
-/* ── Page hero ───────────────────────────────────────── */
+/* ── Page title ──────────────────────────────────────── */
 
-.page-hero {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
-  color: #fff;
-  padding: 72px 0 80px;
+.page-title {
+  padding: 48px 0 40px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
 }
 
-.page-hero__blob {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
+.page-title h1 { margin-bottom: 10px; }
 
-.page-hero__blob--yellow {
-  width: 220px;
-  height: 220px;
-  background: var(--yellow-bright);
-  opacity: 0.16;
-  top: -60px;
-  right: 8%;
+.page-title p {
+  color: var(--text-light);
+  font-size: 16px;
+  max-width: 60ch;
+  margin: 0;
 }
-
-.page-hero__blob--pink {
-  width: 160px;
-  height: 160px;
-  background: var(--pink-light);
-  opacity: 0.18;
-  bottom: -50px;
-  right: 22%;
-}
-
-.page-hero .container { position: relative; z-index: 1; }
-.page-hero .section-label { color: var(--yellow); }
-.page-hero h1 { color: #fff; max-width: 20ch; }
-.page-hero p { color: rgba(255,255,255,0.75); font-size: 18px; max-width: 54ch; margin: 0; }
 
 /* ── Scroll-reveal utility ───────────────────────────── */
 
@@ -149,8 +127,9 @@
   position: relative;
   overflow: hidden;
   padding: 108px 0;
-  background: linear-gradient(135deg, var(--pink) 0%, #c2185b 100%);
-  color: #fff;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  color: var(--text);
   text-align: center;
 }
 
@@ -162,7 +141,7 @@
   width: 480px;
   height: 480px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 197, 24, 0.14) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(21, 101, 192, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -178,23 +157,21 @@
   font-family: var(--serif);
   font-size: 100px;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.2);
+  color: var(--border);
   margin-bottom: -20px;
 }
-
-.vision .section-label--yellow { color: var(--yellow); }
 
 .vision__title {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 500;
-  color: #fff;
+  color: var(--text-h);
   max-width: 18ch;
   margin: 0 auto 20px;
 }
 
 .vision__body {
-  color: rgba(255, 255, 255, 0.82);
+  color: var(--text-light);
   font-size: 19px;
   line-height: 1.8;
   max-width: 58ch;
