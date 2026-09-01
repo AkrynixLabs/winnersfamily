@@ -132,11 +132,26 @@
   margin-top: 20px;
 }
 
+.form-error {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--pink);
+}
+
 .form-note {
   margin-top: 12px;
   font-size: 13px;
   color: var(--text-light);
 }
+
+.form-success {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.form-success__icon { font-size: 40px; display: block; margin-bottom: 16px; }
+.form-success h4 { margin: 0 0 8px; font-size: 20px; }
+.form-success p { color: var(--text-light); margin: 0; }
 
 /* ── Map ─────────────────────────────────────────────── */
 

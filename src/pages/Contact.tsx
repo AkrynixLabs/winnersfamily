@@ -1,5 +1,8 @@
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
+import { submitToFormspree } from '../lib/formspree'
 import './Contact.css'
+
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 const MAP_EMBED_SRC =
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.7!2d-0.3325333!3d5.5851092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfa395fdb3eb99%3A0x7a61eeb616d8c1d4!2sWinners%20Family%20School!5e0!3m2!1sen!2sgh!4v1690000000000!5m2!1sen!2sgh'
@@ -7,6 +10,21 @@ const MAP_LINK = 'https://maps.app.goo.gl/demBhbxC5vVDakyLA'
 
 function Contact() {
   const [mapLoaded, setMapLoaded] = useState(false)
+  const [status, setStatus] = useState<FormStatus>('idle')
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const form = e.currentTarget
+    setStatus('submitting')
+    try {
+      await submitToFormspree(form)
+      setStatus('success')
+      form.reset()
+    } catch {
+      setStatus('error')
+    }
+  }
+
   return (
     <>
       {/* ── Page hero ── */}
@@ -61,8 +79,8 @@ function Contact() {
                 <div className="contact-info-card__icon contact-info-card__icon--blue">🕐</div>
                 <div>
                   <h4>School Hours</h4>
-                  <p>Monday – Friday: 7:30am – 3:00pm</p>
-                  <p>Office: 7:30am – 4:00pm</p>
+                  <p>Monday to Friday: 7:30am to 3:00pm</p>
+                  <p>Office: 7:30am to 4:00pm</p>
                 </div>
               </div>
             </div>
@@ -72,52 +90,63 @@ function Contact() {
               <h3>Send Us a Message</h3>
               <p>Fill in the form and we'll get back to you within one working day.</p>
 
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault()
-                  alert('Thank you! Your message has been received. We will be in touch shortly.')
-                }}
-              >
-                <div className="form-grid">
-                  <div className="form-group">
-                    <label htmlFor="firstName">First Name *</label>
-                    <input id="firstName" type="text" placeholder="Kofi" required />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="lastName">Last Name *</label>
-                    <input id="lastName" type="text" placeholder="Mensah" required />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="phone">Phone Number *</label>
-                    <input id="phone" type="tel" placeholder="024 XXX XXXX" required />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="email">Email Address</label>
-                    <input id="email" type="email" placeholder="you@example.com" />
-                  </div>
-                  <div className="form-group form-group--full">
-                    <label htmlFor="subject">Subject *</label>
-                    <select id="subject" required defaultValue="">
-                      <option value="" disabled>Select a topic…</option>
-                      <option>Admissions Enquiry</option>
-                      <option>School Visit / Tour</option>
-                      <option>Fees &amp; Payments</option>
-                      <option>Academic Programme</option>
-                      <option>General Enquiry</option>
-                    </select>
-                  </div>
-                  <div className="form-group form-group--full">
-                    <label htmlFor="message">Message *</label>
-                    <textarea id="message" placeholder="Tell us what you'd like to know…" required />
-                  </div>
+              {status === 'success' ? (
+                <div className="form-success">
+                  <span className="form-success__icon">✅</span>
+                  <h4>Message Sent</h4>
+                  <p>Thanks for reaching out — we'll get back to you within one working day.</p>
                 </div>
-                <div className="form-submit">
-                  <button type="submit" className="btn btn-yellow">Send Message</button>
-                </div>
-                <p className="form-note">
-                  * Required fields. We respect your privacy and will not share your details.
-                </p>
-              </form>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  <input type="hidden" name="_subject" value="New message from the Winners Family School website" />
+                  <div className="form-grid">
+                    <div className="form-group">
+                      <label htmlFor="firstName">First Name *</label>
+                      <input id="firstName" name="First Name" type="text" placeholder="Kofi" required />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="lastName">Last Name *</label>
+                      <input id="lastName" name="Last Name" type="text" placeholder="Mensah" required />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="phone">Phone Number *</label>
+                      <input id="phone" name="Phone Number" type="tel" placeholder="024 XXX XXXX" required />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="email">Email Address</label>
+                      <input id="email" name="Email Address" type="email" placeholder="you@example.com" />
+                    </div>
+                    <div className="form-group form-group--full">
+                      <label htmlFor="subject">Subject *</label>
+                      <select id="subject" name="Subject" required defaultValue="">
+                        <option value="" disabled>Select a topic…</option>
+                        <option>Admissions Enquiry</option>
+                        <option>School Visit / Tour</option>
+                        <option>Fees &amp; Payments</option>
+                        <option>Academic Programme</option>
+                        <option>General Enquiry</option>
+                      </select>
+                    </div>
+                    <div className="form-group form-group--full">
+                      <label htmlFor="message">Message *</label>
+                      <textarea id="message" name="Message" placeholder="Tell us what you'd like to know…" required />
+                    </div>
+                  </div>
+                  <div className="form-submit">
+                    <button type="submit" className="btn btn-yellow" disabled={status === 'submitting'}>
+                      {status === 'submitting' ? 'Sending…' : 'Send Message'}
+                    </button>
+                  </div>
+                  {status === 'error' && (
+                    <p className="form-error">
+                      Something went wrong sending your message. Please try again, or call us directly.
+                    </p>
+                  )}
+                  <p className="form-note">
+                    * Required fields. We respect your privacy and will not share your details.
+                  </p>
+                </form>
+              )}
             </div>
           </div>
         </div>
@@ -145,7 +174,7 @@ function Contact() {
                 <span className="map-facade__icon">📍</span>
                 <span className="map-facade__label">Load Map</span>
                 <span className="map-facade__hint">
-                  Bulemin - Gbawe, Accra, Ghana — click to load the interactive map
+                  Bulemin - Gbawe, Accra, Ghana. Click to load the interactive map
                 </span>
               </button>
             )}

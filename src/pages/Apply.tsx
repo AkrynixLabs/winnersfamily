@@ -1,60 +1,23 @@
 import { useState, type FormEvent } from 'react'
+import { submitToFormspree } from '../lib/formspree'
 import './Apply.css'
 
-const SCHOOL_EMAIL = 'winnersfamilyschool123@gmail.com'
-
-function buildMailto(data: FormData): string {
-  const get = (name: string) => (data.get(name) as string || '').trim()
-
-  const studentName = get('studentName')
-  const dob = get('dob')
-  const gender = get('gender')
-  const level = get('level')
-  const previousSchool = get('previousSchool') || 'N/A'
-  const parentName = get('parentName')
-  const relationship = get('relationship')
-  const phone = get('phone')
-  const email = get('email')
-  const address = get('address')
-  const term = get('term')
-  const notes = get('notes') || 'None'
-
-  const subject = `New Enrolment Application — ${studentName || 'Unnamed Student'}`
-
-  const body = [
-    'NEW ENROLMENT APPLICATION',
-    'Winners Family School',
-    '',
-    '— Student Details —',
-    `Full Name: ${studentName}`,
-    `Date of Birth: ${dob}`,
-    `Gender: ${gender}`,
-    `Level Applying For: ${level}`,
-    `Previous School (if transferring): ${previousSchool}`,
-    '',
-    '— Parent / Guardian Details —',
-    `Full Name: ${parentName}`,
-    `Relationship to Student: ${relationship}`,
-    `Phone Number: ${phone}`,
-    `Email Address: ${email}`,
-    `Home Address: ${address}`,
-    '',
-    '— Additional Information —',
-    `Preferred Start Term: ${term}`,
-    `Notes: ${notes}`,
-  ].join('\n')
-
-  return `mailto:${SCHOOL_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-}
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 function Apply() {
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState<FormStatus>('idle')
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const data = new FormData(e.currentTarget)
-    window.location.href = buildMailto(data)
-    setSubmitted(true)
+    const form = e.currentTarget
+    setStatus('submitting')
+    try {
+      await submitToFormspree(form)
+      setStatus('success')
+      form.reset()
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -65,7 +28,7 @@ function Apply() {
           <span className="section-label">Admissions</span>
           <h1>Start Your Application</h1>
           <p>
-            Fill in the details below for your child. Submitting the form opens your email app with everything pre-filled — just hit send to complete the application.
+            Fill in the details below for your child. We'll review your application and get back to you to confirm next steps.
           </p>
         </div>
       </section>
@@ -73,12 +36,15 @@ function Apply() {
       {/* ── Form ── */}
       <section className="apply-section">
         <div className="container">
+          {status === 'success' ? (
+            <div className="apply-form__banner apply-form__banner--success">
+              <span className="apply-form__banner-icon">✅</span>
+              <h2>Application Received</h2>
+              <p>Thank you for applying to Winners Family School. We'll be in touch to confirm next steps and required documents.</p>
+            </div>
+          ) : (
           <form className="apply-form" onSubmit={handleSubmit}>
-            {submitted && (
-              <div className="apply-form__banner">
-                Your email app should now be open with the application pre-filled. If it didn't open, check that you have an email app configured, then press Send in it to complete your application.
-              </div>
-            )}
+            <input type="hidden" name="_subject" value="New admission application, Winners Family School" />
 
             <div className="apply-form__section">
               <h2>Student Details</h2>
@@ -104,7 +70,7 @@ function Apply() {
                   <select id="level" name="level" required defaultValue="">
                     <option value="" disabled>Select a level…</option>
                     <optgroup label="Preschool">
-                      <option>Crèche</option>
+                      <option>Creche</option>
                       <option>Nursery</option>
                       <option>KG 1</option>
                       <option>KG 2</option>
@@ -182,12 +148,20 @@ function Apply() {
             </div>
 
             <div className="form-submit">
-              <button type="submit" className="btn btn-yellow">Submit Application</button>
+              <button type="submit" className="btn btn-yellow" disabled={status === 'submitting'}>
+                {status === 'submitting' ? 'Submitting…' : 'Submit Application'}
+              </button>
             </div>
+            {status === 'error' && (
+              <p className="apply-form__error">
+                Something went wrong submitting your application. Please try again, or call us directly.
+              </p>
+            )}
             <p className="form-note">
-              * Required fields. Submitting opens an email pre-addressed to {SCHOOL_EMAIL} — nothing is sent until you press Send in your own email app.
+              * Required fields. Your application is sent directly to Winners Family School.
             </p>
           </form>
+          )}
         </div>
       </section>
     </>

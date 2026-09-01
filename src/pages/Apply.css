@@ -42,6 +42,25 @@
   margin-bottom: 32px;
 }
 
+.apply-form__banner--success {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  color: var(--text);
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.apply-form__banner-icon { font-size: 40px; display: block; margin-bottom: 16px; }
+.apply-form__banner--success h2 { margin: 0 0 8px; }
+.apply-form__banner--success p { color: var(--text-light); margin: 0; max-width: 44ch; margin-inline: auto; }
+
+.apply-form__error {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--pink);
+}
+
 .apply-form__section {
   padding-bottom: 32px;
   margin-bottom: 32px;
