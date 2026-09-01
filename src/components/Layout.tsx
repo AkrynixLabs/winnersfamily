@@ -1,11 +1,43 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 import { useState } from 'react'
 import './Layout.css'
 
-const NAV_LINKS = [
-  { to: '/about', label: 'About' },
-  { to: '/academics', label: 'Academics' },
-  { to: '/admissions', label: 'Admissions' },
+interface NavChild {
+  to: string
+  label: string
+}
+
+interface NavEntry {
+  to?: string
+  label: string
+  children?: NavChild[]
+}
+
+const NAV_LINKS: NavEntry[] = [
+  { to: '/', label: 'Home' },
+  {
+    label: 'About',
+    children: [
+      { to: '/about/team', label: 'Our Team' },
+      { to: '/about/history', label: 'History' },
+      { to: '/about/mission-vision', label: 'Mission & Vision' },
+    ],
+  },
+  {
+    label: 'Academics',
+    children: [
+      { to: '/academics/early-years', label: 'Early Years' },
+      { to: '/academics/primary', label: 'Primary' },
+      { to: '/academics/jhs', label: 'Junior High School' },
+    ],
+  },
+  {
+    label: 'Admissions',
+    children: [
+      { to: '/admissions', label: 'Overview & Requirements' },
+      { to: '/admissions/apply', label: 'Start Application' },
+    ],
+  },
   { to: '/gallery', label: 'Gallery' },
   { to: '/news', label: 'News' },
   { to: '/contact', label: 'Contact' },
@@ -16,7 +48,6 @@ function Layout() {
 
   return (
     <>
-      <div className="top-stripe" />
       <header className="site-header">
         <div className="container site-header__inner">
           <NavLink to="/" className="brand">
@@ -39,18 +70,48 @@ function Layout() {
           </button>
 
           <nav className={`site-nav ${navOpen ? 'is-open' : ''}`} aria-label="Primary">
-            {NAV_LINKS.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) =>
-                  isActive ? 'site-nav__link is-active' : 'site-nav__link'
-                }
-                onClick={() => setNavOpen(false)}
-              >
-                {link.label}
-              </NavLink>
-            ))}
+            {NAV_LINKS.map((link) =>
+              link.children ? (
+                <div className="site-nav__item site-nav__item--dropdown" key={link.label}>
+                  <button type="button" className="site-nav__link site-nav__link--dropdown">
+                    {link.label}
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="site-nav__dropdown-chevron">
+                      <path d="M2.5 4.5L6 8l3.5-3.5" />
+                    </svg>
+                  </button>
+                  <div className="site-nav__dropdown-menu">
+                    {link.children.map((child) => (
+                      <NavLink
+                        key={child.to}
+                        to={child.to}
+                        className={({ isActive }) =>
+                          isActive ? 'site-nav__link is-active' : 'site-nav__link'
+                        }
+                        onClick={() => setNavOpen(false)}
+                      >
+                        {child.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <NavLink
+                  key={link.to}
+                  to={link.to as string}
+                  end={link.to === '/'}
+                  className={({ isActive }) =>
+                    isActive ? 'site-nav__link is-active' : 'site-nav__link'
+                  }
+                  onClick={() => setNavOpen(false)}
+                >
+                  {link.label}
+                </NavLink>
+              )
+            )}
+            <Link to="/contact" className="site-nav__cta" onClick={() => setNavOpen(false)}>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15c-1.146 0-2.229-.265-3.101-.729a5.99 5.99 0 0 1-1.436-1.032L1.5 14l.663-1.99A6.5 6.5 0 1 1 8 15z"/></svg>
+              Enquiries
+            </Link>
           </nav>
         </div>
       </header>
@@ -74,7 +135,7 @@ function Layout() {
             <div>
               <h4 className="footer-col__heading">Quick Links</h4>
               <ul className="footer-col__links">
-                <li><NavLink to="/about">About Us</NavLink></li>
+                <li><NavLink to="/about/team">About Us</NavLink></li>
                 <li><NavLink to="/academics">Academics</NavLink></li>
                 <li><NavLink to="/admissions">Admissions</NavLink></li>
                 <li><NavLink to="/gallery">Gallery</NavLink></li>

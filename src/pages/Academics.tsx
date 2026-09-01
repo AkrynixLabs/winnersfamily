@@ -1,36 +1,31 @@
+import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 import './Academics.css'
 
 const LEVELS = [
-  {
-    icon: '🌱',
-    sidebarClass: 'level-detail__sidebar--yellow',
-    title: 'Preschool',
-    range: 'Crèche · Nursery · KG 1 & 2',
-    desc: 'Our early years programme provides a warm, nurturing introduction to school life. Through play-based activities, children develop foundational literacy, numeracy, and social skills that prepare them confidently for primary school.',
-    subjects: ['Literacy', 'Numeracy', 'Creative Arts', 'Physical Education', 'Rhymes & Songs', 'Social Skills'],
-    img: null,
-  },
-  {
-    icon: '📚',
-    sidebarClass: 'level-detail__sidebar--pink',
-    title: 'Primary School',
-    range: 'Basic 1 – Basic 6',
-    desc: 'Our primary curriculum follows the Ghana Education Service syllabus with added emphasis on reading fluency and mathematical reasoning. Small class sizes allow teachers to identify and support each child\'s individual learning needs.',
-    subjects: ['English Language', 'Mathematics', 'Integrated Science', 'Social Studies', 'Ghanaian Language', 'Creative Arts', 'RME', 'Computing', 'Physical Education'],
-    img: '/images/computer-lab.png',
-  },
-  {
-    icon: '🎓',
-    sidebarClass: 'level-detail__sidebar--blue',
-    title: 'Junior High School',
-    range: 'Form 1 – Form 3 (JHS)',
-    desc: 'JHS prepares students for the Basic Education Certificate Examination (BECE). We provide structured revision programmes, past-question practice, and subject-specific support to ensure every student is BECE-ready.',
-    subjects: ['English Language', 'Mathematics', 'Integrated Science', 'Social Studies', 'RME', 'BDT', 'French', 'ICT', 'Ghanaian Language', 'Physical Education'],
-    img: '/images/bece-prep.png',
-  },
+  { color: 'yellow', badge: 'Preschool', title: 'Early Years', range: 'Crèche · Nursery · KG 1 & 2', to: '/academics/early-years' },
+  { color: 'pink', badge: 'Primary', title: 'Primary School', range: 'Basic 1 – Basic 6', to: '/academics/primary' },
+  { color: 'blue', badge: 'JHS', title: 'Junior High School', range: 'Form 1 – Form 3 (JHS)', to: '/academics/jhs' },
 ]
 
 function Academics() {
+  useEffect(() => {
+    const targets = document.querySelectorAll('.reveal')
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    )
+    targets.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <>
       {/* ── Page hero ── */}
@@ -44,33 +39,31 @@ function Academics() {
         </div>
       </section>
 
-      {/* ── Levels detail ── */}
-      <section className="levels-detail">
+      {/* ── Levels overview ── */}
+      <section className="levels-overview">
         <div className="container">
-          <span className="section-label">School Levels</span>
-          <h2>What We Offer</h2>
-          <div className="levels-detail__grid">
-            {LEVELS.map((level) => (
-              <div className="level-detail" key={level.title}>
-                <div className={`level-detail__sidebar ${level.sidebarClass}`}>
-                  <span className="level-icon">{level.icon}</span>
-                  <h3>{level.title}</h3>
-                  <span className="level-detail__range">{level.range}</span>
-                </div>
-                <div className="level-detail__body">
-                  <p>{level.desc}</p>
-                  {level.img && (
-                    <div className="level-detail__img">
-                      <img src={level.img} alt={level.title} loading="lazy" />
-                    </div>
-                  )}
-                  <div className="subject-tags">
-                    {level.subjects.map((s) => (
-                      <span className="subject-tag" key={s}>{s}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+          <div className="levels-overview__header reveal">
+            <span className="section-label">School Levels</span>
+            <h2>What We Offer</h2>
+            <p>Three levels, one continuous journey. Select a level to see its full curriculum, subjects, and photos.</p>
+          </div>
+
+          <div className="levels-overview__grid">
+            {LEVELS.map((level, i) => (
+              <Link
+                to={level.to}
+                className={`level-preview level-preview--${level.color} reveal`}
+                key={level.title}
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                <span className="level-preview__badge">{level.badge}</span>
+                <h3>{level.title}</h3>
+                <span className="level-preview__range">{level.range}</span>
+                <span className="level-preview__cta">
+                  View details
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg>
+                </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -79,21 +72,23 @@ function Academics() {
       {/* ── Academic Calendar ── */}
       <section className="academic-calendar">
         <div className="container">
-          <span className="section-label">Academic Calendar</span>
-          <h2>Three Terms Per Year</h2>
-          <p>Winners Family School follows the Ghana Education Service academic calendar.</p>
+          <div className="reveal">
+            <span className="section-label">Academic Calendar</span>
+            <h2>Three Terms Per Year</h2>
+            <p>Winners Family School follows the Ghana Education Service academic calendar.</p>
+          </div>
           <div className="terms-grid">
-            <div className="term-card">
+            <div className="term-card reveal" style={{ transitionDelay: '0ms' }}>
               <div className="term-card__number term-card__number--yellow">First Term</div>
               <h3>September – December</h3>
               <p>Main intake period. New student enrolment prioritised. Ends with end-of-term examinations before the Christmas break.</p>
             </div>
-            <div className="term-card">
+            <div className="term-card reveal" style={{ transitionDelay: '100ms' }}>
               <div className="term-card__number term-card__number--pink">Second Term</div>
               <h3>January – April</h3>
               <p>Resumption after Christmas. Mid-year assessments and inter-school activities. Ends with Easter break.</p>
             </div>
-            <div className="term-card">
+            <div className="term-card reveal" style={{ transitionDelay: '200ms' }}>
               <div className="term-card__number term-card__number--blue">Third Term</div>
               <h3>May – August</h3>
               <p>Final term. JHS students sit BECE. End-of-year examinations and graduation for completing students.</p>

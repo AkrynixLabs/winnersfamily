@@ -1,0 +1,212 @@
+/* ── Page hero ───────────────────────────────────────── */
+
+.page-hero {
+  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
+  color: #fff;
+  padding: 72px 0 80px;
+}
+
+.page-hero h1 { color: #fff; margin-bottom: 8px; }
+.page-hero p { color: rgba(255,255,255,0.8); font-size: 18px; margin: 0; }
+
+/* ── Scroll-reveal utility ───────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Level badge ─────────────────────────────────────── */
+
+.level-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.level-badge--yellow { background: var(--yellow-muted); color: #B88A00; }
+.level-badge--pink { background: var(--pink-muted); color: var(--pink); }
+.level-badge--blue { background: #E3F0FF; color: var(--blue); }
+
+/* ── Content section ─────────────────────────────────── */
+
+.level-content {
+  padding: 88px 0 96px;
+  background: var(--bg);
+}
+
+.level-content__intro {
+  max-width: 68ch;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.level-content__intro h2 { margin-bottom: 16px; }
+
+.level-content__desc {
+  color: var(--text-light);
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.level-curriculum {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 32px 36px;
+}
+
+.level-curriculum__label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+.subject-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.subject-tag {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 100px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* ── Gallery section ─────────────────────────────────── */
+
+.level-gallery {
+  padding: 88px 0 96px;
+  background: var(--surface);
+}
+
+.level-gallery__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.level-gallery__header h2 { margin-bottom: 0; }
+
+.level-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.level-photo {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg);
+  aspect-ratio: 4 / 3;
+}
+
+.level-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.level-photo__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 14px;
+  background: linear-gradient(to top, rgba(9, 20, 46, 0.8) 0%, rgba(9, 20, 46, 0) 55%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.level-photo__overlay span {
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.level-photo:hover img { transform: scale(1.08); }
+.level-photo:hover .level-photo__overlay { opacity: 1; }
+
+/* ── Next level strip ─────────────────────────────────── */
+
+.level-next {
+  padding: 32px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.level-next__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.level-next__inner span {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.level-next__link {
+  font-family: var(--heading);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--pink);
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
+  display: inline-block;
+}
+
+.level-next__link:hover {
+  color: var(--pink-light);
+  transform: translateX(4px);
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .level-curriculum { padding: 24px 22px; }
+}
+
+@media (max-width: 640px) {
+  .level-gallery__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 420px) {
+  .level-gallery__grid { grid-template-columns: 1fr; }
+}

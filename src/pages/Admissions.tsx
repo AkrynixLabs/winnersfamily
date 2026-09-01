@@ -31,10 +31,10 @@ const STEPS = [
 function Admissions() {
   return (
     <>
-      {/* ── Page hero ── */}
-      <section className="page-hero">
+      {/* ── Page title ── */}
+      <section className="page-title">
         <div className="container">
-          <span className="section-label section-label--yellow">Admissions</span>
+          <span className="section-label">Admissions</span>
           <h1>Join the Winners Family</h1>
           <p>
             Admissions are open year-round. Our main intake is at the start of Term 1 in September — we encourage early applications to secure a place.
@@ -151,6 +151,9 @@ function Admissions() {
             Visit us at Bulemin-Gbawe, Accra, or call to arrange a school tour before applying.
           </p>
           <div className="admissions-cta__actions">
+            <Link to="/admissions/apply" className="btn btn-yellow">
+              Start Application
+            </Link>
             <Link to="/contact" className="btn btn-blue" style={{ background: 'var(--blue)', color: '#fff' }}>
               Contact Us
             </Link>
