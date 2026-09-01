@@ -8,6 +8,7 @@ import Academics from './pages/Academics'
 import EarlyYears from './pages/EarlyYears'
 import Primary from './pages/Primary'
 import JuniorHigh from './pages/JuniorHigh'
+import Staff from './pages/Staff'
 import Admissions from './pages/Admissions'
 import Apply from './pages/Apply'
 import Gallery from './pages/Gallery'
@@ -27,6 +28,7 @@ function App() {
         <Route path="academics/early-years" element={<EarlyYears />} />
         <Route path="academics/primary" element={<Primary />} />
         <Route path="academics/jhs" element={<JuniorHigh />} />
+        <Route path="academics/staff" element={<Staff />} />
         <Route path="admissions" element={<Admissions />} />
         <Route path="admissions/apply" element={<Apply />} />
         <Route path="gallery" element={<Gallery />} />

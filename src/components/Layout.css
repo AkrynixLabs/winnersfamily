@@ -245,7 +245,7 @@
 
 .site-footer__stripe {
   height: 4px;
-  background: linear-gradient(90deg, var(--yellow) 0%, var(--pink) 50%, var(--blue-light) 100%);
+  background: var(--blue);
 }
 
 .site-footer__body {

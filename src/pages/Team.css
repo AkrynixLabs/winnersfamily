@@ -162,31 +162,11 @@
 .staff-card h4 { margin: 0 0 4px; font-size: 16px; }
 .staff-card p { font-size: 13px; color: var(--text-light); margin: 0; }
 
-/* ── CTA ─────────────────────────────────────────────── */
-
-.team-cta {
-  padding: 64px 0;
-  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
-  color: #fff;
-}
-
-.team-cta__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.team-cta h2 { color: #fff; margin-bottom: 6px; }
-.team-cta p { color: rgba(255, 255, 255, 0.75); margin: 0; max-width: 48ch; }
-
 /* ── Responsive ──────────────────────────────────────── */
 
 @media (max-width: 768px) {
   .leadership__spotlight { grid-template-columns: 1fr; }
   .leadership__grid { grid-template-columns: 1fr 1fr; }
-  .team-cta__inner { text-align: center; justify-content: center; }
 }
 
 @media (max-width: 480px) {

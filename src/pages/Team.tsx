@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import './Team.css'
 
@@ -99,17 +98,6 @@ function Team() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section className="team-cta">
-        <div className="container team-cta__inner reveal">
-          <div>
-            <h2>Want to Meet the Team?</h2>
-            <p>Schedule a visit or reach out — we're happy to introduce you to the staff working with your child.</p>
-          </div>
-          <Link to="/contact" className="btn btn-yellow">Get in Touch</Link>
         </div>
       </section>
     </>
