@@ -1,6 +1,12 @@
+import { useState } from 'react'
 import './Contact.css'
 
+const MAP_EMBED_SRC =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.7!2d-0.3325333!3d5.5851092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfa395fdb3eb99%3A0x7a61eeb616d8c1d4!2sWinners%20Family%20School!5e0!3m2!1sen!2sgh!4v1690000000000!5m2!1sen!2sgh'
+const MAP_LINK = 'https://maps.app.goo.gl/demBhbxC5vVDakyLA'
+
 function Contact() {
+  const [mapLoaded, setMapLoaded] = useState(false)
   return (
     <>
       {/* ── Page hero ── */}
@@ -122,14 +128,31 @@ function Contact() {
         <div className="container">
           <h2>Find Us</h2>
           <div className="map-wrap">
-            <iframe
-              title="Winners Family School Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.7!2d-0.3325333!3d5.5851092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdfa395fdb3eb99%3A0x7a61eeb616d8c1d4!2sWinners%20Family%20School!5e0!3m2!1sen!2sgh!4v1690000000000!5m2!1sen!2sgh"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            {mapLoaded ? (
+              <iframe
+                title="Winners Family School Location"
+                src={MAP_EMBED_SRC}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            ) : (
+              <button
+                type="button"
+                className="map-facade"
+                onClick={() => setMapLoaded(true)}
+              >
+                <span className="map-facade__icon">📍</span>
+                <span className="map-facade__label">Load Map</span>
+                <span className="map-facade__hint">
+                  Bulemin - Gbawe, Accra, Ghana — click to load the interactive map
+                </span>
+              </button>
+            )}
           </div>
+          <a className="map-external-link" href={MAP_LINK} target="_blank" rel="noreferrer">
+            Open in Google Maps ↗
+          </a>
         </div>
       </section>
     </>
