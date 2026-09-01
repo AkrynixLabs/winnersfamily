@@ -24,6 +24,11 @@
   align-items: start;
 }
 
+.contact-info,
+.contact-form-wrap {
+  min-width: 0;
+}
+
 /* ── Info cards ──────────────────────────────────────── */
 
 .contact-info {
@@ -89,6 +94,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
 }
 
 .form-group--full { grid-column: 1 / -1; }

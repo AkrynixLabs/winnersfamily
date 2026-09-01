@@ -255,13 +255,6 @@
 /* ── Responsive ──────────────────────────────────────── */
 
 @media (max-width: 900px) {
-  .site-footer__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-}
-
-@media (max-width: 720px) {
   .nav-toggle { display: flex; }
 
   .site-nav {
@@ -282,6 +275,13 @@
     font-size: 15px;
   }
 
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 720px) {
   .site-footer__grid {
     grid-template-columns: 1fr;
     gap: 32px;
