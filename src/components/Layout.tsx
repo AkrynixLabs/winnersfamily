@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import './Layout.css'
 
@@ -46,6 +46,17 @@ const NAV_LINKS: NavEntry[] = [
 function Layout() {
   const [navOpen, setNavOpen] = useState(false)
   const close = () => setNavOpen(false)
+  const { pathname, hash } = useLocation()
+
+  // Start each new page at the top (the router keeps the old scroll position otherwise).
+  // Links to an in-page section (#id) still scroll to that section.
+  useEffect(() => {
+    if (hash) {
+      document.getElementById(hash.slice(1))?.scrollIntoView()
+      return
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname, hash])
 
   // Close the mobile menu with Escape
   useEffect(() => {

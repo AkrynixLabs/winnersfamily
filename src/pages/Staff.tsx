@@ -1,18 +1,15 @@
 import './Staff.css'
+import ImageHero from '../components/ImageHero'
 
 function Staff() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="page-hero">
-        <div className="container">
-          <span className="section-label section-label--yellow">Academics</span>
-          <h1>Staff</h1>
-          <p>
-            Resources and directory information for Winners Family School staff.
-          </p>
-        </div>
-      </section>
+      <ImageHero label="Academics" title={<>Staff</>} image="/images/academic/bece-prep.png" position="center 2%">
+        <p>
+          Resources and directory information for Winners Family School staff.
+        </p>
+      </ImageHero>
 
       {/* ── Tabs ── */}
       <section className="staff-section">
