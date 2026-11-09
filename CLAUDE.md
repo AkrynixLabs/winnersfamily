@@ -41,7 +41,7 @@ There is no test suite configured in this project yet. Run `lint` and `build` af
 - Blue: `#1565C0` (primary background/header, trust, knowledge)
 
 **Design Direction:** Modern and bold  
-**Logo:** Placeholder crest at `public/logo.svg` (blue shield, yellow border and W, pink star), used in header, footer and as favicon. Replace if the client supplies an official logo  
+**Logo:** Yellow (`#F5C518`) line-art emblem taken from the school crest — torch, praying hands, open book and the "Discipline, Power & Knowledge" ribbon, without the shield or the school name; transparent background, designed for the blue header/footer. Source: `public/logo.svg`. PNG exports (lettering baked in): `logo.png` (master, 1978×1323), `emblem-web.png` (header/footer), `logo-512.png`, plus `emblem-touch-icon.png` and `emblem-favicon-32.png` on a navy tile. Re-export the PNGs after editing the SVG
 
 ## Architecture
 
@@ -75,7 +75,7 @@ React 19 + TypeScript + Vite SPA, no backend. Routing is client-side via `react-
 |---|---|---|
 | `--blue` | `#1565C0` | Primary / header / hero backgrounds |
 | `--blue-deep` | `#0D47A1` | Darker blue for depth |
-| `--navy` | `#0A1A3A` | Navbar background |
+| `--navy` | `#0A1A3A` | Dark shade for photo-hero overlays (navbar and footer use `--blue`) |
 | `--blue-light` | `#1976D2` | Hover states |
 | `--yellow` | `#F5C518` | Primary CTA buttons, accents |
 | `--yellow-bright` | `#FFD740` | Hover state for yellow |

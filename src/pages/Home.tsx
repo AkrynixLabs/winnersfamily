@@ -42,9 +42,9 @@ const PILLARS = [
 
 const LEVELS = [
   {
-    color: 'yellow',
+    color: 'blue',
     badge: 'Preschool',
-    badgeClass: 'level-card__badge--yellow',
+    badgeClass: 'level-card__badge--blue',
     title: 'Early Years',
     desc: 'Crèche, Nursery, and Kindergarten (KG 1 & 2). Focused on play-based learning, numeracy, literacy, and social development.',
   },
@@ -56,9 +56,9 @@ const LEVELS = [
     desc: 'A rigorous core curriculum in English, Mathematics, Science, and Social Studies, with strong emphasis on reading and problem-solving.',
   },
   {
-    color: 'blue',
+    color: 'yellow',
     badge: 'JHS',
-    badgeClass: 'level-card__badge--blue',
+    badgeClass: 'level-card__badge--yellow',
     title: 'Form 1 – 3',
     desc: 'Junior High School preparing students for the BECE, with additional support classes and extracurricular programmes.',
   },
@@ -104,22 +104,25 @@ function Home() {
     <>
       {/* ── Hero ── */}
       <section className="hero">
-        <div className="hero__bg" aria-hidden="true">
-          <video
-            ref={videoRef}
-            className="hero__video"
-            src={HERO_VIDEO}
-            poster={HERO_POSTER}
-            autoPlay={playing}
-            muted
-            loop
-            playsInline
-            preload="auto"
-          />
+        <div className="hero__bg" aria-hidden="true" style={{ backgroundImage: `url(${HERO_POSTER})` }}>
+          {/* The video file is portrait with the footage in a band across the middle;
+              the frame crops to just that band so no black bars show at any size. */}
+          <div className="hero__video-frame">
+            <video
+              ref={videoRef}
+              className="hero__video"
+              src={HERO_VIDEO}
+              autoPlay={playing}
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
+          </div>
           <div className="hero__overlay" />
         </div>
 
-        <div className="hero__content">
+        <div className="container hero__content">
           <span className="hero__badge">
             <span className="hero__badge-dot" />
             Est. 2nd September, 2008

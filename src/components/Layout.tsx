@@ -64,7 +64,7 @@ function Layout() {
 
         <div className="container site-header__inner">
           <NavLink to="/" className="brand" aria-label="Winners Family School home" onClick={close}>
-            <img src="/logo.svg" alt="" className="brand__logo" width="40" height="45" />
+            <img src="/emblem-web.png?v=4" alt="" className="brand__logo" width="87" height="58" />
             <span className="brand__text">
               <span className="brand__name">Winners Family School</span>
               <span className="brand__tagline">Est. 2008</span>
@@ -160,7 +160,7 @@ function Layout() {
         <div className="container site-footer__body">
           <div className="site-footer__grid">
             <div>
-              <img src="/logo.svg" alt="Winners Family School crest" className="footer-brand__logo" width="52" height="58" />
+              <img src="/emblem-web.png?v=4" alt="Winners Family School emblem" className="footer-brand__logo" width="160" height="107" />
               <h3 className="footer-brand__name">Winners Family School</h3>
               <p className="footer-brand__desc">
                 Building excellence in education since 2008, rooted in discipline, power, and knowledge.

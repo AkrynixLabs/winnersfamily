@@ -65,7 +65,7 @@ function News() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="News &amp; Events" title={<>What's Happening at WFS</>} image="/images/news/news-hero.jpg" position="center 55%">
+      <ImageHero label="News &amp; Events" title={<>What's Happening at WFS</>} image="/images/news/news-events-calendar.jpg?v=2" fit="banner">
         <p>
           Stay up to date with school news, achievements, events, and announcements from Winners Family School.
         </p>

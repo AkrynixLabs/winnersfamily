@@ -1,12 +1,13 @@
 /* ── Hero ────────────────────────────────────────────── */
 
 .hero {
-  background: var(--blue-deep);
+  background: var(--navy);
   color: #fff;
-  padding: 48px 0 40px;
+  padding: 72px 0 88px;
   position: relative;
   overflow: hidden;
-  min-height: clamp(480px, 42vw, 760px);
+  /* fill most of the screen, within sensible limits */
+  min-height: clamp(520px, calc(100svh - 76px), 820px);
   display: flex;
   align-items: center;
 }
@@ -15,14 +16,35 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  background-size: cover;
+  background-position: center 35%;
+  container-type: size;
+}
+
+/*
+ * Crop the footage band out of the portrait video file (1080x1920).
+ * Usable footage: x 0-1020, y 730-1268 (538px tall) -> ratio 1020/538 = 1.896.
+ * The frame "covers" the hero at that ratio; the video is sized and shifted
+ * inside it so only the footage band is visible.
+ */
+.hero__video-frame {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100cqw, 189.6cqh);
+  height: max(100cqh, calc(100cqw / 1.896));
+  transform: translate(-50%, -50%);
+  overflow: hidden;
 }
 
 .hero__video {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  left: 0;
+  top: -135.69%;         /* -730 / 538 */
+  width: 105.88%;        /* 1080 / 1020 */
+  height: 356.88%;       /* 1920 / 538 */
+  object-fit: fill;
+  max-width: none;
 }
 
 .hero__overlay {
@@ -34,9 +56,10 @@
 .hero__content {
   position: relative;
   z-index: 1;
-  max-width: 620px;
-  padding-left: clamp(24px, 6vw, 88px);
+  width: min(1280px, 100%); /* line up with the navbar */
 }
+
+.hero__content > * { max-width: 640px; }
 
 .hero__badge {
   display: inline-flex;
@@ -64,7 +87,7 @@
 
 .hero__title {
   font-family: var(--heading);
-  font-size: clamp(30px, 4.2vw, 56px);
+  font-size: clamp(32px, 2.6vw + 22px, 60px);
   line-height: 1.1;
   color: #fff;
   letter-spacing: -1px;
@@ -87,11 +110,11 @@
 }
 
 .hero__desc {
-  font-size: 13.5px;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 22px;
-  max-width: none;
+  font-size: clamp(15px, 0.4vw + 13.5px, 18px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 28px;
+  max-width: 54ch;
   line-height: 1.6;
 }
 
@@ -710,11 +733,9 @@
 }
 
 @media (max-width: 600px) {
-  .hero { padding: 44px 0 36px; }
-  .hero__content { max-width: 100%; }
+  .hero { padding: 56px 0 84px; min-height: clamp(520px, calc(100svh - 68px), 760px); }
   .hero__overlay {
-    background:
-      linear-gradient(180deg, rgba(9, 20, 46, 0.72) 0%, rgba(9, 20, 46, 0.45) 45%, rgba(9, 20, 46, 0.15) 100%);
+    background: linear-gradient(180deg, rgba(9, 20, 46, 0.78) 0%, rgba(9, 20, 46, 0.62) 55%, rgba(9, 20, 46, 0.72) 100%);
   }
   .stats-bar__inner { grid-template-columns: 1fr 1fr; row-gap: 20px; }
   .stat { border-right: none; }
@@ -722,4 +743,9 @@
   .levels__grid { grid-template-columns: 1fr; }
   .overview__visual { grid-template-columns: 1fr; }
   .overview-card--wide { grid-column: 1; }
+}
+
+@media (max-width: 420px) {
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn-pill { justify-content: center; padding: 14px 22px; }
 }

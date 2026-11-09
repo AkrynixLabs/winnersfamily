@@ -40,7 +40,7 @@ function JuniorHigh() {
       <section className="level-content">
         <div className="container">
           <div className="level-content__intro reveal">
-            <span className="level-badge level-badge--blue">JHS</span>
+            <span className="level-badge level-badge--yellow">JHS</span>
             <h2>BECE-Ready, Every Year</h2>
             <p className="level-content__desc">
               JHS prepares students for the Basic Education Certificate Examination (BECE). We provide structured revision programmes, past-question practice, and subject-specific support to ensure every student is BECE-ready.

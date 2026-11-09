@@ -4,9 +4,9 @@ import './Academics.css'
 import ImageHero from '../components/ImageHero'
 
 const LEVELS = [
-  { color: 'yellow', badge: 'Preschool', title: 'Early Years', range: 'Crèche · Nursery · KG 1 & 2', to: '/academics/early-years' },
+  { color: 'blue', badge: 'Preschool', title: 'Early Years', range: 'Crèche · Nursery · KG 1 & 2', to: '/academics/early-years' },
   { color: 'pink', badge: 'Primary', title: 'Primary School', range: 'Basic 1 – Basic 6', to: '/academics/primary' },
-  { color: 'blue', badge: 'JHS', title: 'Junior High School', range: 'Form 1 – Form 3 (JHS)', to: '/academics/jhs' },
+  { color: 'yellow', badge: 'JHS', title: 'Junior High School', range: 'Form 1 – Form 3 (JHS)', to: '/academics/jhs' },
 ]
 
 function Academics() {

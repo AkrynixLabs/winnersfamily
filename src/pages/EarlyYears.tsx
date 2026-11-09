@@ -34,7 +34,7 @@ function EarlyYears() {
       <section className="level-content">
         <div className="container">
           <div className="level-content__intro reveal">
-            <span className="level-badge level-badge--yellow">Preschool</span>
+            <span className="level-badge level-badge--blue">Preschool</span>
             <h2>A Warm Start to School Life</h2>
             <p className="level-content__desc">
               Our early years programme provides a warm, nurturing introduction to school life. Through play-based activities, children develop foundational literacy, numeracy, and social skills that prepare them confidently for primary school.
