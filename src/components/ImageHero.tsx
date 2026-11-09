@@ -24,7 +24,7 @@ function ImageHero({ label, title, children, image, position = 'center', fit = '
     return (
       <section className="image-hero-banner">
         <div className="image-hero-banner__fill" aria-hidden="true" style={{ backgroundImage: `url(${image})` }} />
-        <img className="image-hero-banner__img" src={image} alt="" aria-hidden="true" />
+        <img className="image-hero-banner__img" src={image} alt="" aria-hidden="true" fetchPriority="high" decoding="async" />
         <div className="sr-only">
           <span>{label}</span>
           <h1>{title}</h1>
@@ -42,6 +42,8 @@ function ImageHero({ label, title, children, image, position = 'center', fit = '
         src={image}
         alt=""
         aria-hidden="true"
+        fetchPriority="high"
+        decoding="async"
         style={contain ? undefined : { objectPosition: position }}
       />
       <div className="image-hero__overlay" aria-hidden="true" />

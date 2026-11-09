@@ -31,9 +31,11 @@ function Contact() {
       <section className="contact-hero">
         <img
           className="contact-hero__img"
-          src="/images/community/visitors-1.jpg"
+          src="/images/community/visitors-1.webp"
           alt=""
           aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="contact-hero__overlay" aria-hidden="true" />
 

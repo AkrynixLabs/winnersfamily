@@ -71,7 +71,7 @@ function History() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="About Us" title={<>Our History</>} image="/images/about/history-hero.jpg" position="center 60%">
+      <ImageHero label="About Us" title={<>Our History</>} image="/images/about/history-hero.webp" position="center 60%">
         <p>
           From a small starting class in 2008 to a full Crèche-to-JHS institution — the story of Winners Family School.
         </p>

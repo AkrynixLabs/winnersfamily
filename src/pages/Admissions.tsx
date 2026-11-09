@@ -33,7 +33,7 @@ function Admissions() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="Admissions" title={<>Join the Winners Family</>} image="/images/admissions/overview-hero.jpg" position="center 35%">
+      <ImageHero label="Admissions" title={<>Join the Winners Family</>} image="/images/admissions/overview-hero.webp" position="center 35%">
         <p>
           Admissions are open year-round. Our main intake is at the start of Term 1 in September — we encourage early applications to secure a place.
         </p>

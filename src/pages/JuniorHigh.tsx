@@ -6,9 +6,9 @@ import ImageHero from '../components/ImageHero'
 const SUBJECTS = ['English Language', 'Mathematics', 'Integrated Science', 'Social Studies', 'RME', 'BDT', 'French', 'ICT', 'Ghanaian Language', 'Physical Education']
 
 const PHOTOS = [
-  { src: '/images/achievement/bece-2020-certificate.jpg', alt: 'Best Behaved School certificate from the 2020 BECE' },
-  { src: '/images/achievement/bece-2020-celebration-2.jpg', alt: 'JHS students celebrating the 2020 BECE award' },
-  { src: '/images/achievement/bece-2020-boys-1.jpg', alt: 'The JHS class of 2020' },
+  { src: '/images/achievement/bece-2020-certificate.webp', alt: 'Best Behaved School certificate from the 2020 BECE' },
+  { src: '/images/achievement/bece-2020-celebration-2.webp', alt: 'JHS students celebrating the 2020 BECE award' },
+  { src: '/images/achievement/bece-2020-boys-1.webp', alt: 'The JHS class of 2020' },
 ]
 
 function JuniorHigh() {
@@ -32,7 +32,7 @@ function JuniorHigh() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="Academics" title={<>Junior High School</>} image="/images/achievement/bece-2020-class-group.jpg" position="center 45%">
+      <ImageHero label="Academics" title={<>Junior High School</>} image="/images/achievement/bece-2020-class-group.webp" position="center 45%">
         <p>Form 1 – Form 3 (JHS)</p>
       </ImageHero>
 

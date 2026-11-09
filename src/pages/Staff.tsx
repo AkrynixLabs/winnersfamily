@@ -5,7 +5,7 @@ function Staff() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="Academics" title={<>Staff</>} image="/images/academic/bece-prep.png" position="center 2%">
+      <ImageHero label="Academics" title={<>Staff</>} image="/images/about/staff-hero.webp" position="center 25%">
         <p>
           Resources and directory information for Winners Family School staff.
         </p>

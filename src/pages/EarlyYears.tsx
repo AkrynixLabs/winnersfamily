@@ -26,7 +26,7 @@ function EarlyYears() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="Academics" title={<>Early Years</>} image="/images/academic/early-years-hero.jpg" position="center 8%">
+      <ImageHero label="Academics" title={<>Early Years</>} image="/images/academic/early-years-hero.webp" position="center 8%">
         <p>Crèche · Nursery · KG 1 &amp; 2</p>
       </ImageHero>
 

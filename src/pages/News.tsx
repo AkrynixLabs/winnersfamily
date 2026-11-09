@@ -3,7 +3,7 @@ import ImageHero from '../components/ImageHero'
 
 const NEWS_CARDS = [
   {
-    img: '/images/achievement/bece-2020-class-group.jpg',
+    img: '/images/achievement/bece-2020-class-group.webp',
     imgAlt: 'Student receiving BECE award',
     bg: 'news-card__img--blue',
     tag: 'Achievement',
@@ -13,7 +13,7 @@ const NEWS_CARDS = [
     date: 'July 2026',
   },
   {
-    img: '/images/achievement/bece-2020-boys-2.jpg',
+    img: '/images/achievement/bece-2020-boys-2.webp',
     imgAlt: 'Students during physical education',
     bg: 'news-card__img--yellow',
     tag: 'Sports',
@@ -23,7 +23,7 @@ const NEWS_CARDS = [
     date: 'June 2026',
   },
   {
-    img: '/images/achievement/bece-2020-students.jpg',
+    img: '/images/achievement/bece-2020-students.webp',
     imgAlt: 'Students in traditional Ghanaian dress',
     bg: 'news-card__img--pink',
     tag: 'Events',
@@ -33,7 +33,7 @@ const NEWS_CARDS = [
     date: 'May 2026',
   },
   {
-    img: '/images/academic/classroom-lesson.jpg',
+    img: '/images/academic/classroom-lesson.webp',
     imgAlt: 'Students in BECE preparation class',
     bg: 'news-card__img--blue',
     tag: 'Academic',
@@ -43,7 +43,7 @@ const NEWS_CARDS = [
     date: 'July 2026',
   },
   {
-    img: '/images/excursions/trip-1.png',
+    img: '/images/excursions/trip-1.webp',
     imgAlt: 'Students on a school excursion',
     bg: 'news-card__img--yellow',
     tag: 'Events',
@@ -65,7 +65,7 @@ function News() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="News &amp; Events" title={<>What's Happening at WFS</>} image="/images/news/news-events-calendar.jpg?v=2" fit="banner">
+      <ImageHero label="News &amp; Events" title={<>What's Happening at WFS</>} image="/images/news/news-events-calendar.webp" fit="banner">
         <p>
           Stay up to date with school news, achievements, events, and announcements from Winners Family School.
         </p>
@@ -76,7 +76,7 @@ function News() {
         <div className="container">
           <div className="news-featured__card">
             <div className="news-featured__img">
-              <img src="/images/history/students-2015.png" alt="Students assembled for start of year" />
+              <img src="/images/history/students-2015.webp" alt="Students assembled for start of year" />
             </div>
             <div className="news-featured__body">
               <span className="pill pill--yellow">Featured</span>

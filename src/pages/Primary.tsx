@@ -6,9 +6,9 @@ import ImageHero from '../components/ImageHero'
 const SUBJECTS = ['English Language', 'Mathematics', 'Integrated Science', 'Social Studies', 'Ghanaian Language', 'Creative Arts', 'RME', 'Computing', 'Physical Education']
 
 const PHOTOS = [
-  { src: '/images/academic/classroom-lesson.jpg', alt: 'Pupils at their desks during a lesson' },
-  { src: '/images/academic/bece-prep.png', alt: 'Pupils working through exercises in class' },
-  { src: '/images/community/visitors-1.jpg', alt: 'Pupils welcoming a visiting group' },
+  { src: '/images/academic/classroom-lesson.webp', alt: 'Pupils at their desks during a lesson' },
+  { src: '/images/academic/bece-prep.webp', alt: 'Pupils working through exercises in class' },
+  { src: '/images/community/visitors-1.webp', alt: 'Pupils welcoming a visiting group' },
 ]
 
 function Primary() {
@@ -32,7 +32,7 @@ function Primary() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="Academics" title={<>Primary School</>} image="/images/excursions/trip-1.png" position="center 45%">
+      <ImageHero label="Academics" title={<>Primary School</>} image="/images/excursions/trip-1.webp" position="center 45%">
         <p>Basic 1 – Basic 6</p>
       </ImageHero>
 

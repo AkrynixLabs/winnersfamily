@@ -24,7 +24,7 @@ function Apply() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="Admissions" title={<>Start Your Application</>} image="/images/admissions/apply-hero.jpg" position="center 40%">
+      <ImageHero label="Admissions" title={<>Start Your Application</>} image="/images/admissions/apply-hero.webp" position="center 40%">
         <p>
           Fill in the details below for your child. We'll review your application and get back to you to confirm next steps.
         </p>

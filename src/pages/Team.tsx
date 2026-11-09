@@ -8,7 +8,7 @@ const LEADERSHIP = [
     color: 'yellow',
     name: 'Our Founder',
     role: 'Founded WFS · 2008',
-    img: '/images/history/school-founder.png',
+    img: '/images/history/school-founder.webp',
     bio: 'Opened the doors of Winners Family School on 2nd September, 2008, with a vision for disciplined, community-rooted education in Bulemin-Gbawe.',
   },
   {
@@ -16,7 +16,7 @@ const LEADERSHIP = [
     color: 'pink',
     name: 'School Leadership',
     role: 'Headmistress / Headmaster',
-    img: '/images/history/mummy.png',
+    img: '/images/history/mummy.webp',
     bio: 'Oversees day-to-day school operations, staff development, and the discipline-first culture that defines WFS.',
   },
 ]
@@ -48,7 +48,7 @@ function Team() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="About Us" title={<>Our Team</>} image="/images/about/team-hero.jpg" position="center 38%">
+      <ImageHero label="About Us" title={<>Our Team</>} image="/images/about/team-hero.webp" position="center 38%">
         <p>
           The leadership and staff guiding Winners Family School, from the Headmistress's office to every classroom.
         </p>

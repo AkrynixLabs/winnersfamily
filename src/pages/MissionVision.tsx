@@ -44,7 +44,7 @@ function MissionVision() {
   return (
     <>
       {/* ── Page hero ── */}
-      <ImageHero label="About Us" title={<>Mission &amp; Vision</>} image="/images/about/mission-vision-hero.jpg" position="center 75%">
+      <ImageHero label="About Us" title={<>Mission &amp; Vision</>} image="/images/about/mission-vision-hero.webp" position="center 75%">
         <p>
           The purpose and principles that guide Winners Family School, from our earliest years through Junior High School.
         </p>
