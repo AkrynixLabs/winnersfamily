@@ -1,8 +1,9 @@
 import './News.css'
+import ImageHero from '../components/ImageHero'
 
 const NEWS_CARDS = [
   {
-    img: '/images/bece-award.png',
+    img: '/images/achievement/bece-2020-class-group.jpg',
     imgAlt: 'Student receiving BECE award',
     bg: 'news-card__img--blue',
     tag: 'Achievement',
@@ -12,7 +13,7 @@ const NEWS_CARDS = [
     date: 'July 2026',
   },
   {
-    img: '/images/pe-edu.png',
+    img: '/images/achievement/bece-2020-boys-2.jpg',
     imgAlt: 'Students during physical education',
     bg: 'news-card__img--yellow',
     tag: 'Sports',
@@ -22,7 +23,7 @@ const NEWS_CARDS = [
     date: 'June 2026',
   },
   {
-    img: '/images/traditional-dress.png',
+    img: '/images/achievement/bece-2020-students.jpg',
     imgAlt: 'Students in traditional Ghanaian dress',
     bg: 'news-card__img--pink',
     tag: 'Events',
@@ -32,7 +33,7 @@ const NEWS_CARDS = [
     date: 'May 2026',
   },
   {
-    img: '/images/bece-prep-covid.png',
+    img: '/images/academic/classroom-lesson.jpg',
     imgAlt: 'Students in BECE preparation class',
     bg: 'news-card__img--blue',
     tag: 'Academic',
@@ -42,7 +43,7 @@ const NEWS_CARDS = [
     date: 'July 2026',
   },
   {
-    img: '/images/excursion-1.png',
+    img: '/images/excursions/trip-1.png',
     imgAlt: 'Students on a school excursion',
     bg: 'news-card__img--yellow',
     tag: 'Events',
@@ -64,22 +65,18 @@ function News() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="page-hero">
-        <div className="container">
-          <span className="section-label section-label--yellow">News &amp; Events</span>
-          <h1>What's Happening at WFS</h1>
-          <p>
-            Stay up to date with school news, achievements, events, and announcements from Winners Family School.
-          </p>
-        </div>
-      </section>
+      <ImageHero label="News &amp; Events" title={<>What's Happening at WFS</>} image="/images/news/news-hero.jpg" position="center 55%">
+        <p>
+          Stay up to date with school news, achievements, events, and announcements from Winners Family School.
+        </p>
+      </ImageHero>
 
       {/* ── Featured ── */}
       <section className="news-featured">
         <div className="container">
           <div className="news-featured__card">
             <div className="news-featured__img">
-              <img src="/images/bece-assembly.png" alt="Students assembled for start of year" />
+              <img src="/images/history/students-2015.png" alt="Students assembled for start of year" />
             </div>
             <div className="news-featured__body">
               <span className="pill pill--yellow">Featured</span>

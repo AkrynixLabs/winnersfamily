@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import './Apply.css'
+import ImageHero from '../components/ImageHero'
 
 const SCHOOL_EMAIL = 'winnersfamilyschool123@gmail.com'
 
@@ -59,16 +60,12 @@ function Apply() {
 
   return (
     <>
-      {/* ── Page title ── */}
-      <section className="page-title">
-        <div className="container">
-          <span className="section-label">Admissions</span>
-          <h1>Start Your Application</h1>
-          <p>
-            Fill in the details below for your child. Submitting the form opens your email app with everything pre-filled — just hit send to complete the application.
-          </p>
-        </div>
-      </section>
+      {/* ── Page hero ── */}
+      <ImageHero label="Admissions" title={<>Start Your Application</>} image="/images/admissions/apply-hero.jpg" position="center 40%">
+        <p>
+          Fill in the details below for your child. Submitting the form opens your email app with everything pre-filled — just hit send to complete the application.
+        </p>
+      </ImageHero>
 
       {/* ── Form ── */}
       <section className="apply-section">

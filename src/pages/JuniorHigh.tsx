@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import './JuniorHigh.css'
+import ImageHero from '../components/ImageHero'
 
 const SUBJECTS = ['English Language', 'Mathematics', 'Integrated Science', 'Social Studies', 'RME', 'BDT', 'French', 'ICT', 'Ghanaian Language', 'Physical Education']
 
 const PHOTOS = [
-  { src: '/images/bece-prep.png', alt: 'JHS students in a BECE preparation class' },
-  { src: '/images/bece-award.png', alt: 'Students celebrating a BECE award' },
-  { src: '/images/bece-assembly.png', alt: 'JHS students at morning assembly' },
+  { src: '/images/achievement/bece-2020-certificate.jpg', alt: 'Best Behaved School certificate from the 2020 BECE' },
+  { src: '/images/achievement/bece-2020-celebration-2.jpg', alt: 'JHS students celebrating the 2020 BECE award' },
+  { src: '/images/achievement/bece-2020-boys-1.jpg', alt: 'The JHS class of 2020' },
 ]
 
 function JuniorHigh() {
@@ -31,13 +32,9 @@ function JuniorHigh() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="page-hero">
-        <div className="container">
-          <span className="section-label section-label--yellow">Academics</span>
-          <h1>Junior High School</h1>
-          <p>Form 1 – Form 3 (JHS)</p>
-        </div>
-      </section>
+      <ImageHero label="Academics" title={<>Junior High School</>} image="/images/achievement/bece-2020-class-group.jpg" position="center 45%">
+        <p>Form 1 – Form 3 (JHS)</p>
+      </ImageHero>
 
       {/* ── Content ── */}
       <section className="level-content">

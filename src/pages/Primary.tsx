@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import './Primary.css'
+import ImageHero from '../components/ImageHero'
 
 const SUBJECTS = ['English Language', 'Mathematics', 'Integrated Science', 'Social Studies', 'Ghanaian Language', 'Creative Arts', 'RME', 'Computing', 'Physical Education']
 
 const PHOTOS = [
-  { src: '/images/excursion.png', alt: 'Primary pupils on a school excursion' },
-  { src: '/images/students-study.png', alt: 'Pupils studying together in class' },
-  { src: '/images/computer-lab.png', alt: 'Pupils in the computer lab' },
+  { src: '/images/academic/classroom-lesson.jpg', alt: 'Pupils at their desks during a lesson' },
+  { src: '/images/academic/bece-prep.png', alt: 'Pupils working through exercises in class' },
+  { src: '/images/community/visitors-1.jpg', alt: 'Pupils welcoming a visiting group' },
 ]
 
 function Primary() {
@@ -31,13 +32,9 @@ function Primary() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="page-hero">
-        <div className="container">
-          <span className="section-label section-label--yellow">Academics</span>
-          <h1>Primary School</h1>
-          <p>Basic 1 – Basic 6</p>
-        </div>
-      </section>
+      <ImageHero label="Academics" title={<>Primary School</>} image="/images/excursions/trip-1.png" position="center 45%">
+        <p>Basic 1 – Basic 6</p>
+      </ImageHero>
 
       {/* ── Content ── */}
       <section className="level-content">

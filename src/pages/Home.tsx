@@ -1,22 +1,19 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './Home.css'
 
-// Hero background slides — restricted to the high-resolution source photos so
-// the full-bleed background stays sharp (most other assets are 206x206 thumbnails)
-const HERO_SLIDES = [
-  { src: '/images/bece-prep.png', alt: 'Students in BECE preparation class' },
-  { src: '/images/2015-students.png', alt: 'Winners Family School students and staff group photo' },
-  { src: '/images/excursion.png', alt: 'Students on a school excursion' },
-]
+// Hero background video; the poster shows while it loads and when motion is reduced
+const HERO_VIDEO = '/videos/school-video.mp4'
+const HERO_POSTER = '/images/history/students-2015.png'
 
+// "Life at WFS" grid: high-resolution photos only (first one is the large feature tile)
 const PHOTO_STRIP = [
-  { src: '/images/brass-band.png', alt: 'WFS brass band performing' },
-  { src: '/images/wear-ghana-day.png', alt: 'Students on Wear Ghana Day' },
-  { src: '/images/winners-walk.png', alt: 'Students on the Winners Walk' },
-  { src: '/images/bece-award.png', alt: 'BECE award ceremony' },
-  { src: '/images/choreography.png', alt: 'Students performing choreography' },
-  { src: '/images/excursion.png', alt: 'Students on a school excursion' },
+  { src: '/images/achievement/bece-2020-celebration-2.jpg', alt: 'Celebrating the 2020 BECE Best Behaved School award' },
+  { src: '/images/academic/classroom-lesson.jpg', alt: 'Pupils at their desks during a lesson' },
+  { src: '/images/academic/bece-prep.png', alt: 'Form 3 students preparing for the BECE' },
+  { src: '/images/community/visitors-1.jpg', alt: 'A visiting group spending time with our pupils' },
+  { src: '/images/achievement/bece-2020-boys-2.jpg', alt: 'The class of 2020 celebrating together' },
+  { src: '/images/history/students-2015.png', alt: 'Winners Family School students, 2015' },
 ]
 
 const PILLARS = [
@@ -68,14 +65,23 @@ const LEVELS = [
 ]
 
 function Home() {
-  const [slide, setSlide] = useState(0)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  // Respect reduced-motion: don't autoplay, leave the poster showing
+  const [playing, setPlaying] = useState(
+    () => !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+  )
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      setSlide((s) => (s + 1) % HERO_SLIDES.length)
-    }, 4500)
-    return () => clearInterval(id)
-  }, [])
+  function toggleVideo() {
+    const v = videoRef.current
+    if (!v) return
+    if (v.paused) {
+      v.play()
+      setPlaying(true)
+    } else {
+      v.pause()
+      setPlaying(false)
+    }
+  }
 
   useEffect(() => {
     const targets = document.querySelectorAll('.reveal')
@@ -99,13 +105,17 @@ function Home() {
       {/* ── Hero ── */}
       <section className="hero">
         <div className="hero__bg" aria-hidden="true">
-          {HERO_SLIDES.map((s, i) => (
-            <div
-              key={s.src}
-              className={`hero__bg-slide${i === slide ? ' is-active' : ''}`}
-              style={{ backgroundImage: `url(${s.src})` }}
-            />
-          ))}
+          <video
+            ref={videoRef}
+            className="hero__video"
+            src={HERO_VIDEO}
+            poster={HERO_POSTER}
+            autoPlay={playing}
+            muted
+            loop
+            playsInline
+            preload="auto"
+          />
           <div className="hero__overlay" />
         </div>
 
@@ -127,17 +137,18 @@ function Home() {
           </div>
         </div>
 
-        <div className="hero__slider-dots">
-          {HERO_SLIDES.map((s, i) => (
-            <button
-              key={s.src}
-              type="button"
-              className={`hero__dot${i === slide ? ' is-active' : ''}`}
-              aria-label={`Show slide ${i + 1}`}
-              onClick={() => setSlide(i)}
-            />
-          ))}
-        </div>
+        <button
+          type="button"
+          className="hero__video-toggle"
+          onClick={toggleVideo}
+          aria-label={playing ? 'Pause background video' : 'Play background video'}
+        >
+          {playing ? (
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z" /></svg>
+          )}
+        </button>
 
         <div className="hero__bottom-line" aria-hidden="true" />
       </section>

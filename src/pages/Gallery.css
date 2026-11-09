@@ -1,161 +1,59 @@
-/* ── Page hero ───────────────────────────────────────── */
-
-.page-hero {
-  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue) 100%);
-  color: #fff;
-  padding: 72px 0 80px;
-}
-
-.page-hero .section-label { color: var(--yellow); }
-.page-hero h1 { color: #fff; max-width: 22ch; }
-.page-hero p { color: rgba(255,255,255,0.75); font-size: 18px; max-width: 58ch; margin: 0; line-height: 1.7; }
-
-/* ── Filter tabs ─────────────────────────────────────── */
-
-.gallery-filters {
-  padding: 32px 0 0;
-  background: var(--bg);
-}
-
-.gallery-filter-tabs {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.filter-tab {
-  padding: 8px 20px;
-  border-radius: 100px;
-  font-size: 14px;
-  font-weight: 600;
-  background: var(--surface);
-  border: 1.5px solid var(--border);
-  color: var(--text);
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
-  font-family: var(--sans);
-}
-
-.filter-tab:hover {
-  border-color: var(--blue);
-  color: var(--blue);
-}
-
-.filter-tab.is-active {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: #fff;
-}
-
-.gallery-count {
-  margin: 14px 0 0;
-  font-size: 13px;
-  color: var(--text-light);
-}
-
-/* ── Gallery grid ────────────────────────────────────── */
+/* ── Album (masonry) ─────────────────────────────────── */
 
 .gallery-section {
-  padding: 24px 0 88px;
+  padding: 40px 0 88px;
   background: var(--bg);
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+.album {
+  columns: 4 240px;
+  column-gap: 14px;
 }
 
-.gallery-item {
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.gallery-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(21, 101, 192, 0.15);
-}
-
-.gallery-item:focus-visible {
-  outline: 3px solid var(--blue);
-  outline-offset: 2px;
-}
-
-.gallery-item__img {
+.album__photo {
+  display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  margin: 0 0 14px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
   overflow: hidden;
   background: var(--border);
+  cursor: zoom-in;
+  break-inside: avoid;
+  box-shadow: 0 1px 3px rgba(13, 27, 62, 0.08);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  animation: album-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
-.gallery-item__img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+@keyframes album-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.album__photo img {
   display: block;
-  transition: transform 0.4s ease;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.gallery-item:hover .gallery-item__img img {
-  transform: scale(1.05);
+.album__photo:hover {
+  box-shadow: 0 12px 30px rgba(13, 27, 62, 0.18);
+  transform: translateY(-2px);
 }
 
-.gallery-item__caption {
-  padding: 14px 16px;
+.album__photo:hover img { transform: scale(1.04); }
+
+.album__photo:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
 }
 
-.gallery-item__caption-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-
-.gallery-item__caption-top h4 { margin: 0; font-size: 14px; }
-
-.gallery-year-badge {
-  font-size: 11px;
-  font-weight: 700;
-  background: var(--yellow-muted);
-  color: #7A6000;
-  padding: 2px 8px;
-  border-radius: 100px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.gallery-item__caption p {
-  font-size: 13px;
-  color: var(--text-light);
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* ── Notice ──────────────────────────────────────────── */
-
-.gallery-notice {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  margin-top: 32px;
-  padding: 20px 24px;
-  background: var(--surface);
-  border: 1.5px dashed var(--border);
-  border-radius: 12px;
-}
-
-.gallery-notice__icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-
-.gallery-notice p {
-  font-size: 14px;
-  color: var(--text-light);
-  margin: 0;
-  line-height: 1.6;
+@media (prefers-reduced-motion: reduce) {
+  .album__photo { animation: none; }
+  .album__photo,
+  .album__photo img { transition: none; }
 }
 
 /* ── Lightbox ────────────────────────────────────────── */
@@ -224,8 +122,9 @@
 .lightbox__nav--next { right: 16px; }
 
 .lightbox__inner {
-  max-width: 860px;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  max-width: min(1000px, 100%);
   animation: scaleIn 0.2s ease;
 }
 
@@ -235,39 +134,14 @@
 }
 
 .lightbox__inner img {
-  width: 100%;
-  max-height: 72vh;
+  display: block;
+  width: auto;
+  min-width: min(100%, 420px);
+  max-width: 100%;
+  max-height: 82vh;
   object-fit: contain;
   border-radius: 8px;
-  display: block;
 }
-
-.lightbox__caption {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 14px 4px 0;
-  color: #fff;
-}
-
-.lightbox__caption-main {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.lightbox__caption-main strong { font-size: 16px; }
-
-.lightbox__year {
-  font-size: 12px;
-  font-weight: 700;
-  background: var(--yellow);
-  color: var(--blue-deep);
-  padding: 2px 10px;
-  border-radius: 100px;
-}
-
-.lightbox__caption span { font-size: 14px; color: rgba(255,255,255,0.6); }
 
 .lightbox__counter {
   position: absolute;
@@ -284,7 +158,8 @@
 /* ── Responsive ──────────────────────────────────────── */
 
 @media (max-width: 600px) {
-  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .album { columns: 2; column-gap: 10px; }
+  .album__photo { margin-bottom: 10px; border-radius: 8px; }
   .lightbox { padding: 24px 48px; }
   .lightbox__nav { width: 40px; height: 40px; font-size: 22px; }
   .lightbox__nav--prev { left: 4px; }

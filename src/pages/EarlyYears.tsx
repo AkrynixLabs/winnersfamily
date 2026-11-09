@@ -1,14 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import './EarlyYears.css'
+import ImageHero from '../components/ImageHero'
 
 const SUBJECTS = ['Literacy', 'Numeracy', 'Creative Arts', 'Physical Education', 'Rhymes & Songs', 'Social Skills']
-
-const PHOTOS = [
-  { src: '/images/vacation-celebrations.png', alt: 'Early years pupils with their teacher' },
-  { src: '/images/traditional-waer-kids.png', alt: 'Young pupils dressed in traditional wear' },
-  { src: '/images/games.png', alt: 'Pupils enjoying an outdoor school game' },
-]
 
 function EarlyYears() {
   useEffect(() => {
@@ -31,13 +26,9 @@ function EarlyYears() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="page-hero">
-        <div className="container">
-          <span className="section-label section-label--yellow">Academics</span>
-          <h1>Early Years</h1>
-          <p>Crèche · Nursery · KG 1 &amp; 2</p>
-        </div>
-      </section>
+      <ImageHero label="Academics" title={<>Early Years</>} image="/images/academic/early-years-hero.jpg" position="center 8%">
+        <p>Crèche · Nursery · KG 1 &amp; 2</p>
+      </ImageHero>
 
       {/* ── Content ── */}
       <section className="level-content">
@@ -58,26 +49,6 @@ function EarlyYears() {
                 <span className="subject-tag" key={s}>{s}</span>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Pictures ── */}
-      <section className="level-gallery">
-        <div className="container">
-          <div className="level-gallery__header reveal">
-            <span className="section-label">Gallery</span>
-            <h2>Life in Early Years</h2>
-          </div>
-          <div className="level-gallery__grid">
-            {PHOTOS.map((p, i) => (
-              <div className="level-photo reveal" key={p.src} style={{ transitionDelay: `${i * 100}ms` }}>
-                <img src={p.src} alt={p.alt} loading="lazy" />
-                <div className="level-photo__overlay">
-                  <span>{p.alt}</span>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import './MissionVision.css'
+import ImageHero from '../components/ImageHero'
 
 const VALUES = [
   {
@@ -42,16 +43,12 @@ function MissionVision() {
 
   return (
     <>
-      {/* ── Page title ── */}
-      <section className="page-title">
-        <div className="container">
-          <span className="section-label">About Us</span>
-          <h1>Mission &amp; Vision</h1>
-          <p>
-            The purpose and principles that guide Winners Family School, from our earliest years through Junior High School.
-          </p>
-        </div>
-      </section>
+      {/* ── Page hero ── */}
+      <ImageHero label="About Us" title={<>Mission &amp; Vision</>} image="/images/about/mission-vision-hero.jpg" position="center 75%">
+        <p>
+          The purpose and principles that guide Winners Family School, from our earliest years through Junior High School.
+        </p>
+      </ImageHero>
 
       {/* ── Mission ── */}
       <section className="mission">

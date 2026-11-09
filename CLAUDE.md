@@ -41,7 +41,7 @@ There is no test suite configured in this project yet. Run `lint` and `build` af
 - Blue: `#1565C0` (primary background/header, trust, knowledge)
 
 **Design Direction:** Modern and bold  
-**Logo:** To be provided by client — currently using styled WFS text mark  
+**Logo:** Placeholder crest at `public/logo.svg` (blue shield, yellow border and W, pink star), used in header, footer and as favicon. Replace if the client supplies an official logo  
 
 ## Architecture
 
@@ -75,6 +75,7 @@ React 19 + TypeScript + Vite SPA, no backend. Routing is client-side via `react-
 |---|---|---|
 | `--blue` | `#1565C0` | Primary / header / hero backgrounds |
 | `--blue-deep` | `#0D47A1` | Darker blue for depth |
+| `--navy` | `#0A1A3A` | Navbar background |
 | `--blue-light` | `#1976D2` | Hover states |
 | `--yellow` | `#F5C518` | Primary CTA buttons, accents |
 | `--yellow-bright` | `#FFD740` | Hover state for yellow |
@@ -85,6 +86,11 @@ React 19 + TypeScript + Vite SPA, no backend. Routing is client-side via `react-
 | `--bg` | `#F8F9FC` | Page background |
 | `--surface` | `#FFFFFF` | Card / section backgrounds |
 | `--border` | `#E0E4EF` | Borders and dividers |
+
+**Typography:** two fonts only, loaded from Google Fonts in `index.css`.
+- `--heading` (Poppins 600/700/800) for headings, display numbers, buttons and labels
+- `--sans` (Inter 300–700) for body text and everything else
+- No italics (no italic font files are loaded) and no other font families
 
 ## Copy guidelines
 

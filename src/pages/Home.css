@@ -17,17 +17,12 @@
   z-index: 0;
 }
 
-.hero__bg-slide {
+.hero__video {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 1.4s ease;
-}
-
-.hero__bg-slide.is-active {
-  opacity: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero__overlay {
@@ -68,11 +63,11 @@
 }
 
 .hero__title {
-  font-family: var(--serif);
-  font-size: clamp(32px, 4.6vw, 62px);
-  line-height: 1.06;
+  font-family: var(--heading);
+  font-size: clamp(30px, 4.2vw, 56px);
+  line-height: 1.1;
   color: #fff;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
   margin-bottom: 16px;
   max-width: 22ch;
 }
@@ -83,12 +78,11 @@
 }
 
 .hero__title-line1 {
-  font-weight: 400;
+  font-weight: 800;
 }
 
 .hero__title-line2 {
-  font-style: italic;
-  font-weight: 400;
+  font-weight: 700;
   color: var(--yellow);
 }
 
@@ -142,35 +136,34 @@
   background: rgba(255, 255, 255, 0.14);
 }
 
-/* ── Hero slide dots ──────────────────────────────────── */
+/* ── Hero video toggle ────────────────────────────────── */
 
-.hero__slider-dots {
+.hero__video-toggle {
   position: absolute;
-  bottom: 22px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
+  right: 20px;
+  bottom: 20px;
   z-index: 1;
-}
-
-.hero__dot {
-  width: 9px;
-  height: 9px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
   padding: 0;
-  border: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
   border-radius: 100px;
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(9, 20, 46, 0.45);
+  color: #fff;
   cursor: pointer;
-  transition: background 0.2s, width 0.25s;
+  transition: background 0.2s, border-color 0.2s;
 }
 
-.hero__dot:hover { background: rgba(255, 255, 255, 0.75); }
+.hero__video-toggle:hover {
+  background: rgba(9, 20, 46, 0.7);
+  border-color: #fff;
+}
 
-.hero__dot.is-active {
-  background: var(--yellow);
-  width: 24px;
+.hero__video-toggle:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
 }
 
 .hero__bottom-line {
@@ -313,9 +306,11 @@
 
 .pillar-card__num {
   display: block;
-  font-family: var(--serif);
-  font-size: 40px;
-  font-weight: 600;
+  font-family: var(--heading);
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  font-variant-numeric: tabular-nums;
   line-height: 1;
   margin-bottom: 16px;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -560,7 +555,7 @@
   padding: 56px 0 64px;
   background:
     linear-gradient(rgba(11, 61, 140, 0.55), rgba(11, 61, 140, 0.55)),
-    url('/images/2015-students.png') center 30% / cover no-repeat;
+    url('/images/history/students-2015.png') center 30% / cover no-repeat;
   color: #fff;
   position: relative;
   overflow: hidden;

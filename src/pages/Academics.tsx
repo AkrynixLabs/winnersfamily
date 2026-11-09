@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import './Academics.css'
+import ImageHero from '../components/ImageHero'
 
 const LEVELS = [
   { color: 'yellow', badge: 'Preschool', title: 'Early Years', range: 'Crèche · Nursery · KG 1 & 2', to: '/academics/early-years' },
@@ -29,15 +30,9 @@ function Academics() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="page-hero">
-        <div className="container">
-          <span className="section-label section-label--yellow">Academics</span>
-          <h1>Our Curriculum &amp; School Levels</h1>
-          <p>
-            From Crèche to JHS Form 3 — a continuous, high-quality education delivered under one roof at Bulemin-Gbawe, Accra.
-          </p>
-        </div>
-      </section>
+      <ImageHero label="Academics" title={<>Our Curriculum &amp; School Levels</>} image="/images/academic/classroom-lesson.jpg" position="center 40%">
+        <p>From Crèche to JHS Form 3 — a continuous, high-quality education delivered under one roof at Bulemin-Gbawe, Accra.</p>
+      </ImageHero>
 
       {/* ── Levels overview ── */}
       <section className="levels-overview">

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './Admissions.css'
+import ImageHero from '../components/ImageHero'
 
 const STEPS = [
   {
@@ -31,16 +32,12 @@ const STEPS = [
 function Admissions() {
   return (
     <>
-      {/* ── Page title ── */}
-      <section className="page-title">
-        <div className="container">
-          <span className="section-label">Admissions</span>
-          <h1>Join the Winners Family</h1>
-          <p>
-            Admissions are open year-round. Our main intake is at the start of Term 1 in September — we encourage early applications to secure a place.
-          </p>
-        </div>
-      </section>
+      {/* ── Page hero ── */}
+      <ImageHero label="Admissions" title={<>Join the Winners Family</>} image="/images/admissions/overview-hero.jpg" position="center 35%">
+        <p>
+          Admissions are open year-round. Our main intake is at the start of Term 1 in September — we encourage early applications to secure a place.
+        </p>
+      </ImageHero>
 
       {/* ── Overview ── */}
       <section className="admissions-overview">

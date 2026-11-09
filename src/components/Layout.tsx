@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './Layout.css'
 
 interface NavChild {
@@ -18,9 +18,9 @@ const NAV_LINKS: NavEntry[] = [
   {
     label: 'About',
     children: [
-      { to: '/about/team', label: 'Our Team' },
-      { to: '/about/history', label: 'History' },
       { to: '/about/mission-vision', label: 'Mission & Vision' },
+      { to: '/about/history', label: 'History' },
+      { to: '/about/team', label: 'Our Team' },
     ],
   },
   {
@@ -40,55 +40,50 @@ const NAV_LINKS: NavEntry[] = [
   },
   { to: '/gallery', label: 'Gallery' },
   { to: '/news', label: 'News' },
-  { to: '/contact', label: 'Contact' },
 ]
 
 function Layout() {
   const [navOpen, setNavOpen] = useState(false)
+  const close = () => setNavOpen(false)
+
+  // Close the mobile menu with Escape
+  useEffect(() => {
+    if (!navOpen) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setNavOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [navOpen])
+
+  const navClass = ({ isActive }: { isActive: boolean }) =>
+    isActive ? 'site-nav__link is-active' : 'site-nav__link'
 
   return (
     <>
-      <header className="site-header">
+      <header className={`site-header ${navOpen ? 'is-open' : ''}`}>
+        <a href="#main" className="skip-link">Skip to main content</a>
+
         <div className="container site-header__inner">
-          <NavLink to="/" className="brand">
-            <span className="brand__mark">WFS</span>
-            <div className="brand__text">
+          <NavLink to="/" className="brand" aria-label="Winners Family School home" onClick={close}>
+            <img src="/logo.svg" alt="" className="brand__logo" width="40" height="45" />
+            <span className="brand__text">
               <span className="brand__name">Winners Family School</span>
               <span className="brand__tagline">Est. 2008</span>
-            </div>
+            </span>
           </NavLink>
 
-          <button
-            className="nav-toggle"
-            aria-label="Toggle navigation"
-            aria-expanded={navOpen}
-            onClick={() => setNavOpen(!navOpen)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-
-          <nav className={`site-nav ${navOpen ? 'is-open' : ''}`} aria-label="Primary">
+          <nav className="site-nav" aria-label="Main navigation">
             {NAV_LINKS.map((link) =>
               link.children ? (
                 <div className="site-nav__item site-nav__item--dropdown" key={link.label}>
-                  <button type="button" className="site-nav__link site-nav__link--dropdown">
+                  <button type="button" className="site-nav__link site-nav__link--dropdown" aria-haspopup="true">
                     {link.label}
-                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="site-nav__dropdown-chevron">
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="site-nav__dropdown-chevron" aria-hidden="true">
                       <path d="M2.5 4.5L6 8l3.5-3.5" />
                     </svg>
                   </button>
                   <div className="site-nav__dropdown-menu">
                     {link.children.map((child) => (
-                      <NavLink
-                        key={child.to}
-                        to={child.to}
-                        className={({ isActive }) =>
-                          isActive ? 'site-nav__link is-active' : 'site-nav__link'
-                        }
-                        onClick={() => setNavOpen(false)}
-                      >
+                      <NavLink key={child.to} to={child.to} className={navClass} onClick={close}>
                         {child.label}
                       </NavLink>
                     ))}
@@ -99,24 +94,64 @@ function Layout() {
                   key={link.to}
                   to={link.to as string}
                   end={link.to === '/'}
-                  className={({ isActive }) =>
-                    isActive ? 'site-nav__link is-active' : 'site-nav__link'
-                  }
-                  onClick={() => setNavOpen(false)}
+                  className={navClass}
+                  onClick={close}
                 >
                   {link.label}
                 </NavLink>
               )
             )}
-            <Link to="/contact" className="site-nav__cta" onClick={() => setNavOpen(false)}>
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15c-1.146 0-2.229-.265-3.101-.729a5.99 5.99 0 0 1-1.436-1.032L1.5 14l.663-1.99A6.5 6.5 0 1 1 8 15z"/></svg>
-              Enquiries
-            </Link>
+          </nav>
+
+          <div className="site-header__actions">
+            <Link to="/contact" className="header-btn header-btn--ghost" onClick={close}>Contact us</Link>
+            <Link to="/admissions/apply" className="header-btn header-btn--primary" onClick={close}>Apply now</Link>
+          </div>
+
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-label={navOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={navOpen}
+            aria-controls="mobile-nav-panel"
+            onClick={() => setNavOpen(!navOpen)}
+          >
+            {navOpen ? (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+            ) : (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16" /></svg>
+            )}
+          </button>
+        </div>
+
+        {/* ── Mobile panel ── */}
+        <div id="mobile-nav-panel" className="mobile-nav" hidden={!navOpen}>
+          <nav className="container mobile-nav__inner" aria-label="Mobile navigation">
+            {NAV_LINKS.map((link) =>
+              link.children ? (
+                <div className="mobile-nav__group" key={link.label}>
+                  <span className="mobile-nav__heading">{link.label}</span>
+                  {link.children.map((child) => (
+                    <NavLink key={child.to} to={child.to} className={navClass} onClick={close}>
+                      {child.label}
+                    </NavLink>
+                  ))}
+                </div>
+              ) : (
+                <NavLink key={link.to} to={link.to as string} end={link.to === '/'} className={navClass} onClick={close}>
+                  {link.label}
+                </NavLink>
+              )
+            )}
+            <div className="mobile-nav__actions">
+              <Link to="/contact" className="header-btn header-btn--ghost" onClick={close}>Contact us</Link>
+              <Link to="/admissions/apply" className="header-btn header-btn--primary" onClick={close}>Apply now</Link>
+            </div>
           </nav>
         </div>
       </header>
 
-      <main>
+      <main id="main">
         <Outlet />
       </main>
 
@@ -125,7 +160,7 @@ function Layout() {
         <div className="container site-footer__body">
           <div className="site-footer__grid">
             <div>
-              <div className="footer-brand__mark">WFS</div>
+              <img src="/logo.svg" alt="Winners Family School crest" className="footer-brand__logo" width="52" height="58" />
               <h3 className="footer-brand__name">Winners Family School</h3>
               <p className="footer-brand__desc">
                 Building excellence in education since 2008, rooted in discipline, power, and knowledge.

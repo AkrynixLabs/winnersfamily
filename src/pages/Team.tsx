@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import './Team.css'
+import ImageHero from '../components/ImageHero'
 
 const LEADERSHIP = [
   {
@@ -8,7 +9,7 @@ const LEADERSHIP = [
     color: 'yellow',
     name: 'Our Founder',
     role: 'Founded WFS · 2008',
-    img: '/images/school-founder-daddy.png',
+    img: '/images/history/school-founder.png',
     bio: 'Opened the doors of Winners Family School on 2nd September, 2008, with a vision for disciplined, community-rooted education in Bulemin-Gbawe.',
   },
   {
@@ -16,7 +17,7 @@ const LEADERSHIP = [
     color: 'pink',
     name: 'School Leadership',
     role: 'Headmistress / Headmaster',
-    img: '/images/mummy.png',
+    img: '/images/history/mummy.png',
     bio: 'Oversees day-to-day school operations, staff development, and the discipline-first culture that defines WFS.',
   },
 ]
@@ -48,15 +49,11 @@ function Team() {
   return (
     <>
       {/* ── Page hero ── */}
-      <section className="page-hero">
-        <div className="container">
-          <span className="section-label section-label--yellow">About Us</span>
-          <h1>Our Team</h1>
-          <p>
-            The leadership and staff guiding Winners Family School, from the Headmistress's office to every classroom.
-          </p>
-        </div>
-      </section>
+      <ImageHero label="About Us" title={<>Our Team</>} image="/images/about/team-hero.jpg" position="center 38%">
+        <p>
+          The leadership and staff guiding Winners Family School, from the Headmistress's office to every classroom.
+        </p>
+      </ImageHero>
 
       {/* ── Leadership ── */}
       <section className="leadership">
