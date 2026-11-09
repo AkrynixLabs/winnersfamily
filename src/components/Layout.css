@@ -331,7 +331,7 @@
 
 .site-footer__stripe {
   height: 4px;
-  background: linear-gradient(90deg, var(--yellow) 0%, var(--pink) 50%, var(--blue-light) 100%);
+  background: var(--blue);
 }
 
 .site-footer__body {
@@ -468,7 +468,7 @@
   .brand__logo { width: 72px; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .site-footer__grid {
     grid-template-columns: 1fr;
     gap: 32px;

@@ -29,6 +29,7 @@ const NAV_LINKS: NavEntry[] = [
       { to: '/academics/early-years', label: 'Early Years' },
       { to: '/academics/primary', label: 'Primary' },
       { to: '/academics/jhs', label: 'Junior High School' },
+      { to: '/academics/staff', label: 'Staff' },
     ],
   },
   {
