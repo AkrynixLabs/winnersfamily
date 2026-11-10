@@ -55,10 +55,10 @@ const NEWS_CARDS = [
 ]
 
 const EVENTS = [
-  { day: '02', month: 'Sep', title: 'Founders Day — Term 1 Opens', desc: 'New and returning students resume for the 2026/27 first term.' },
+  { day: '02', month: 'Sep', title: 'Founders Day: Term 1 Opens', desc: 'New and returning students resume for the 2026/27 first term.' },
   { day: '15', month: 'Aug', title: 'End-of-Year Prize Giving', desc: 'Annual prize-giving ceremony for outstanding academic and sports achievements.' },
   { day: '01', month: 'Aug', title: 'JHS Graduation 2026', desc: 'Form 3 graduation ceremony for the Class of 2026.' },
-  { day: '25', month: 'Jul', title: 'Last Day — Term 3', desc: 'Official close of the 2025/26 academic year.' },
+  { day: '25', month: 'Jul', title: 'Last Day of Term 3', desc: 'Official close of the 2025/26 academic year.' },
 ]
 
 function News() {
@@ -85,7 +85,7 @@ function News() {
               <p>
                 Winners Family School begins its 19th academic year with a new cohort of students across all sections. Term 1 orientation kicks off on 2nd September. We welcome all new and returning families to another year of discipline, power, and knowledge.
               </p>
-              <span className="pill pill--blue">Term 1 — September 2026</span>
+              <span className="pill pill--blue">Term 1, September 2026</span>
             </div>
           </div>
         </div>

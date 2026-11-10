@@ -236,7 +236,7 @@ function Home() {
               <span className="section-label">About the School</span>
               <h2>Rooted in Community, Driven by Results</h2>
               <p className="overview__body">
-                Founded in 2008, Winners Family School has grown into a trusted institution in the Bulemin-Gbawe community. We combine a structured Ghanaian curriculum with a culture of discipline and high expectations — from a child's earliest years through JHS graduation.
+                Founded in 2008, Winners Family School has grown into a trusted institution in the Bulemin-Gbawe community. We combine a structured Ghanaian curriculum with a culture of discipline and high expectations, from a child's earliest years through JHS graduation.
               </p>
               <div className="overview__pillars">
                 <div className="pillar">
@@ -293,7 +293,7 @@ function Home() {
           <div className="levels__header">
             <span className="section-label section-label--yellow">Academic Levels</span>
             <h2>From Crèche to JHS</h2>
-            <p>One school, multiple levels — giving your child a continuous, familiar learning environment all the way through.</p>
+            <p>One school, multiple levels, giving your child a continuous, familiar learning environment all the way through.</p>
           </div>
           <div className="levels__grid">
             {LEVELS.map((level) => (
@@ -317,7 +317,7 @@ function Home() {
           <span className="section-label">Enrol Today</span>
           <h2>Give Your Child the Best Start</h2>
           <p>
-            Admissions are open year-round. Term 1 intake begins in September — apply early to secure a place.
+            Admissions are open year-round. Term 1 intake begins in September, so apply early to secure a place.
           </p>
           <div className="home-cta__actions">
             <Link to="/admissions/apply" className="btn btn-yellow">Start Application</Link>

@@ -31,7 +31,7 @@ function Academics() {
     <>
       {/* ── Page hero ── */}
       <ImageHero label="Academics" title={<>Our Curriculum &amp; School Levels</>} image="/images/academic/classroom-lesson.webp" position="center 40%">
-        <p>From Crèche to JHS Form 3 — a continuous, high-quality education delivered under one roof at Bulemin-Gbawe, Accra.</p>
+        <p>From Crèche to JHS Form 3: a continuous, high-quality education delivered under one roof at Bulemin-Gbawe, Accra.</p>
       </ImageHero>
 
       {/* ── Levels overview ── */}

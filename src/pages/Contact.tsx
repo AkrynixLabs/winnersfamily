@@ -124,7 +124,7 @@ function Contact() {
                 <div className="form-success">
                   <span className="form-success__icon">✅</span>
                   <h4>Message Sent</h4>
-                  <p>Thanks for reaching out — we'll get back to you within one working day.</p>
+                  <p>Thanks for reaching out. We'll get back to you within one working day.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit}>

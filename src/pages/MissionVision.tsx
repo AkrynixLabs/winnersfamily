@@ -58,7 +58,7 @@ function MissionVision() {
               <span className="section-label">Our Mission</span>
               <h2>What We Stand For</h2>
               <p className="mission__lead">
-                Winners Family School exists to provide every child — from their earliest years through Junior High School — with a solid academic foundation, strong moral character, and the confidence to succeed in a changing world.
+                Winners Family School exists to provide every child, from their earliest years through Junior High School, with a solid academic foundation, strong moral character, and the confidence to succeed in a changing world.
               </p>
               <p className="mission__body">
                 We believe that excellence is not an accident. It is the result of a disciplined learning culture, dedicated teachers, and an engaged school community that pulls together for every child.
@@ -91,7 +91,7 @@ function MissionVision() {
           <span className="section-label section-label--blue">Our Vision</span>
           <h2 className="vision__title">Where We're Headed</h2>
           <p className="vision__body">
-            To be the leading community school in Bulemin-Gbawe, recognised for producing disciplined, knowledgeable graduates who go on to lead with confidence — in further education, their careers, and their communities.
+            To be the leading community school in Bulemin-Gbawe, recognised for producing disciplined, knowledgeable graduates who go on to lead with confidence in further education, their careers, and their communities.
           </p>
         </div>
       </section>

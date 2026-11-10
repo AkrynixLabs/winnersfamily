@@ -35,7 +35,7 @@ function Admissions() {
       {/* ── Page hero ── */}
       <ImageHero label="Admissions" title={<>Join the Winners Family</>} image="/images/admissions/overview-hero.webp" position="center 35%">
         <p>
-          Admissions are open year-round. Our main intake is at the start of Term 1 in September — we encourage early applications to secure a place.
+          Admissions are open year-round. Our main intake is at the start of Term 1 in September, and we encourage early applications to secure a place.
         </p>
       </ImageHero>
 
@@ -50,7 +50,7 @@ function Admissions() {
                 While we welcome applications throughout the year, the majority of new students begin in September with the first term. Applying before July gives your child the best chance of starting with their peers.
               </p>
               <p>
-                We admit students across all levels — from Crèche and Nursery right through to JHS Form 1. Transfer students from other schools are equally welcome.
+                We admit students across all levels, from Crèche and Nursery right through to JHS Form 1. Transfer students from other schools are equally welcome.
               </p>
             </div>
             <div className="intake-cards">
@@ -58,21 +58,21 @@ function Admissions() {
                 <div className="intake-card__icon intake-card__icon--yellow">🌱</div>
                 <div>
                   <h4>Preschool Entry</h4>
-                  <p>Crèche · Nursery · KG 1 & 2 — no prior schooling required</p>
+                  <p>Crèche · Nursery · KG 1 & 2. No prior schooling required</p>
                 </div>
               </div>
               <div className="intake-card">
                 <div className="intake-card__icon intake-card__icon--pink">📚</div>
                 <div>
                   <h4>Primary Entry</h4>
-                  <p>Basic 1 – 6 — placement based on age and assessment</p>
+                  <p>Basic 1 – 6. Placement based on age and assessment</p>
                 </div>
               </div>
               <div className="intake-card">
                 <div className="intake-card__icon intake-card__icon--blue">🎓</div>
                 <div>
                   <h4>JHS Entry</h4>
-                  <p>Form 1 – 3 — transfer students accepted with prior school records</p>
+                  <p>Form 1 – 3. Transfer students accepted with prior school records</p>
                 </div>
               </div>
             </div>

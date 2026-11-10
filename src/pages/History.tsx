@@ -15,7 +15,7 @@ const CHAPTERS = [
     color: 'yellow',
     period: '2008',
     title: 'School Founded',
-    body: 'Winners Family School opened its doors on 2nd September, 2008 at Bulemin-Gbawe, Accra — a small starting class with a big vision for disciplined, community-rooted education.',
+    body: 'Winners Family School opened its doors on 2nd September, 2008 at Bulemin-Gbawe, Accra, with a small starting class with a big vision for disciplined, community-rooted education.',
     points: [] as { year: string; text: string }[],
   },
   {
@@ -25,8 +25,8 @@ const CHAPTERS = [
     title: 'Early Growth',
     body: 'The school expanded quickly in its first years, growing both its academic offering and its place in the Bulemin-Gbawe community.',
     points: [
-      { year: '2010', text: 'Primary Section Established — Basic 1–6 classes added, completing the primary offering.' },
-      { year: '2013', text: 'A Growing Community — more families entrusted their children to WFS each year.' },
+      { year: '2010', text: 'Primary Section Established: Basic 1–6 classes added, completing the primary offering.' },
+      { year: '2013', text: 'A Growing Community: more families entrusted their children to WFS each year.' },
     ],
   },
   {
@@ -36,8 +36,8 @@ const CHAPTERS = [
     title: 'Full Expansion',
     body: 'WFS reached full Crèche-to-JHS continuity, and enrolment kept climbing as the school built a strong reputation locally.',
     points: [
-      { year: '2014', text: 'JHS Section Launched — Form 1–3 introduced, enabling full Crèche-to-BECE continuity.' },
-      { year: '2015', text: 'Expanding Year by Year — steady enrolment growth across all levels.' },
+      { year: '2014', text: 'JHS Section Launched: Form 1–3 introduced, enabling full Crèche-to-BECE continuity.' },
+      { year: '2015', text: 'Expanding Year by Year: steady enrolment growth across all levels.' },
     ],
   },
   {
@@ -73,7 +73,7 @@ function History() {
       {/* ── Page hero ── */}
       <ImageHero label="About Us" title={<>Our History</>} image="/images/about/history-hero.webp" position="center 60%">
         <p>
-          From a small starting class in 2008 to a full Crèche-to-JHS institution — the story of Winners Family School.
+          From a small starting class in 2008 to a full Crèche-to-JHS institution. This is the story of Winners Family School.
         </p>
       </ImageHero>
 
@@ -126,7 +126,7 @@ function History() {
 
           <div className="history__gallery-cta reveal">
             <span>📸</span>
-            <p>Browse the full photo archive — from the early days to recent years — in our <Link to="/gallery">Gallery</Link>. More current photos of the school will be added soon.</p>
+            <p>Browse the full photo archive, from the early days to recent years, in our <Link to="/gallery">Gallery</Link>. More current photos of the school will be added soon.</p>
           </div>
         </div>
       </section>
