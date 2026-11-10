@@ -45,12 +45,14 @@
   height: 356.88%;       /* 1920 / 538 */
   object-fit: fill;
   max-width: none;
+  /* a little extra contrast and colour so the (low-resolution) footage reads crisper */
+  filter: contrast(1.08) saturate(1.15) brightness(1.04);
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(9, 20, 46, 0.72) 0%, rgba(9, 20, 46, 0.45) 45%, rgba(9, 20, 46, 0.15) 100%);
+  background: linear-gradient(to right, rgba(9, 20, 46, 0.70) 0%, rgba(9, 20, 46, 0.40) 38%, rgba(9, 20, 46, 0.06) 72%, rgba(9, 20, 46, 0) 100%);
 }
 
 .hero__content {
@@ -94,6 +96,11 @@
   margin-bottom: 16px;
   max-width: 22ch;
 }
+
+/* keeps the text crisp over the lighter shade */
+.hero__title,
+.hero__desc,
+.hero__badge { text-shadow: 0 2px 14px rgba(5, 12, 30, 0.55); }
 
 .hero__title-line1,
 .hero__title-line2 {
@@ -735,7 +742,7 @@
 @media (max-width: 600px) {
   .hero { padding: 56px 0 84px; min-height: clamp(520px, calc(100svh - 68px), 760px); }
   .hero__overlay {
-    background: linear-gradient(180deg, rgba(9, 20, 46, 0.78) 0%, rgba(9, 20, 46, 0.62) 55%, rgba(9, 20, 46, 0.72) 100%);
+    background: linear-gradient(180deg, rgba(9, 20, 46, 0.66) 0%, rgba(9, 20, 46, 0.46) 55%, rgba(9, 20, 46, 0.60) 100%);
   }
   .stats-bar__inner { grid-template-columns: 1fr 1fr; row-gap: 20px; }
   .stat { border-right: none; }

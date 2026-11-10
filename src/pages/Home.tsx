@@ -4,7 +4,6 @@ import './Home.css'
 
 // Hero background video; the poster shows while it loads and when motion is reduced
 const HERO_VIDEO = '/videos/school-video.mp4'
-const HERO_POSTER = '/images/history/students-2015.webp'
 
 // "Life at WFS" grid: high-resolution photos only (first one is the large feature tile)
 const PHOTO_STRIP = [
@@ -66,31 +65,10 @@ const LEVELS = [
 
 function Home() {
   const videoRef = useRef<HTMLVideoElement>(null)
-  // Respect reduced-motion: don't autoplay, leave the poster showing
+  // Respect reduced-motion: don't autoplay (the video stays on its first frame)
   const [playing, setPlaying] = useState(
     () => !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   )
-  // The hero video is a large file (~21 MB). Only load it on tablet/desktop screens with a
-  // decent connection; phones, Data Saver and slow connections get the photo instead.
-  const [showVideo] = useState(() => {
-    const conn = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection
-    const slow = !!conn && (conn.saveData === true || ['slow-2g', '2g', '3g'].includes(conn.effectiveType ?? ''))
-    return window.matchMedia('(min-width: 768px)').matches && !slow
-  })
-  // Start the video download only after the rest of the page has loaded, so it doesn't
-  // slow down the text and photos. The poster photo shows until then.
-  const [videoSrc, setVideoSrc] = useState<string | undefined>(undefined)
-  useEffect(() => {
-    if (!showVideo) return
-    let timer: number | undefined
-    const start = () => { timer = window.setTimeout(() => setVideoSrc(HERO_VIDEO), 400) }
-    if (document.readyState === 'complete') start()
-    else window.addEventListener('load', start, { once: true })
-    return () => {
-      window.removeEventListener('load', start)
-      if (timer) window.clearTimeout(timer)
-    }
-  }, [showVideo])
 
   function toggleVideo() {
     const v = videoRef.current
@@ -125,23 +103,21 @@ function Home() {
     <>
       {/* ── Hero ── */}
       <section className="hero">
-        <div className="hero__bg" aria-hidden="true" style={{ backgroundImage: `url(${HERO_POSTER})` }}>
+        <div className="hero__bg" aria-hidden="true">
           {/* The video file is portrait with the footage in a band across the middle;
               the frame crops to just that band so no black bars show at any size. */}
-          {showVideo && (
-            <div className="hero__video-frame">
-              <video
-                ref={videoRef}
-                className="hero__video"
-                src={videoSrc}
-                autoPlay={playing}
-                muted
-                loop
-                playsInline
-                preload="auto"
-              />
-            </div>
-          )}
+          <div className="hero__video-frame">
+            <video
+              ref={videoRef}
+              className="hero__video"
+              src={HERO_VIDEO}
+              autoPlay={playing}
+              muted
+              loop
+              playsInline
+              preload="auto"
+            />
+          </div>
           <div className="hero__overlay" />
         </div>
 
@@ -163,20 +139,18 @@ function Home() {
           </div>
         </div>
 
-        {showVideo && (
-          <button
-            type="button"
-            className="hero__video-toggle"
-            onClick={toggleVideo}
-            aria-label={playing ? 'Pause background video' : 'Play background video'}
-          >
-            {playing ? (
-              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>
-            ) : (
-              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z" /></svg>
-            )}
-          </button>
-        )}
+        <button
+          type="button"
+          className="hero__video-toggle"
+          onClick={toggleVideo}
+          aria-label={playing ? 'Pause background video' : 'Play background video'}
+        >
+          {playing ? (
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z" /></svg>
+          )}
+        </button>
 
         <div className="hero__bottom-line" aria-hidden="true" />
       </section>
