@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
 import './Home.css'
 
-// Hero background video; the poster shows while it loads and when motion is reduced
+// Hero background video. The poster is the video's own first frame (same size and
+// position), so the hero looks ready at once and simply starts moving when playback begins.
 const HERO_VIDEO = '/videos/school-video.mp4'
+const HERO_FIRST_FRAME = '/videos/school-video-first-frame.webp'
 
 // "Life at WFS" grid: high-resolution photos only (first one is the large feature tile)
 const PHOTO_STRIP = [
@@ -70,6 +72,24 @@ function Home() {
     () => !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   )
 
+  // Start the hero video as soon as the browser can, on every load and refresh.
+  // autoPlay alone can be skipped (e.g. after a refresh or by power-saving modes),
+  // so play() is also called directly once data arrives.
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v || !playing) return
+    const start = () => {
+      if (v.paused) v.play().catch(() => {})
+    }
+    start()
+    v.addEventListener('loadeddata', start)
+    v.addEventListener('canplay', start)
+    return () => {
+      v.removeEventListener('loadeddata', start)
+      v.removeEventListener('canplay', start)
+    }
+  }, [playing])
+
   function toggleVideo() {
     const v = videoRef.current
     if (!v) return
@@ -111,6 +131,7 @@ function Home() {
               ref={videoRef}
               className="hero__video"
               src={HERO_VIDEO}
+              poster={HERO_FIRST_FRAME}
               autoPlay={playing}
               muted
               loop

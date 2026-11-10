@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { useEffect, useState, useLayoutEffect } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import './Layout.css'
 
 interface NavChild {
@@ -47,6 +47,10 @@ function Layout() {
   const [navOpen, setNavOpen] = useState(false)
   const close = () => setNavOpen(false)
   const { pathname, hash } = useLocation()
+  // The page you land on (or refresh) shows straight away; only later page changes fade in.
+  const [firstPath] = useState(pathname)
+  const [hasNavigated, setHasNavigated] = useState(false)
+  if (!hasNavigated && pathname !== firstPath) setHasNavigated(true)
 
   // Start each new page at the top (the router keeps the old scroll position otherwise).
   // The jump happens before the new page is painted, and the page then fades in
@@ -165,7 +169,7 @@ function Layout() {
         </div>
       </header>
 
-      <main id="main" key={pathname} className="page-enter">
+      <main id="main" key={pathname} className={hasNavigated ? 'page-enter' : undefined}>
         <Outlet />
       </main>
 

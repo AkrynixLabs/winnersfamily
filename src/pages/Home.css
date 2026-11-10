@@ -16,8 +16,8 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-size: cover;
-  background-position: center 35%;
+  /* shown only in the instant before the first-frame image arrives */
+  background: linear-gradient(135deg, var(--blue-deep) 0%, var(--navy) 100%);
   container-type: size;
 }
 
