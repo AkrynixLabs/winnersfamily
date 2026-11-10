@@ -1,5 +1,5 @@
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useLayoutEffect } from 'react'
 import './Layout.css'
 
 interface NavChild {
@@ -49,10 +49,12 @@ function Layout() {
   const { pathname, hash } = useLocation()
 
   // Start each new page at the top (the router keeps the old scroll position otherwise).
-  // Links to an in-page section (#id) still scroll to that section.
-  useEffect(() => {
+  // The jump happens before the new page is painted, and the page then fades in
+  // (see .page-enter), so the move to the top is never seen.
+  // Links to an in-page section (#id) glide smoothly to that section.
+  useLayoutEffect(() => {
     if (hash) {
-      document.getElementById(hash.slice(1))?.scrollIntoView()
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' })
       return
     }
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
@@ -163,7 +165,7 @@ function Layout() {
         </div>
       </header>
 
-      <main id="main">
+      <main id="main" key={pathname} className="page-enter">
         <Outlet />
       </main>
 
