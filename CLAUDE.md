@@ -41,7 +41,7 @@ There is no test suite configured in this project yet. Run `lint` and `build` af
 - Blue: `#1565C0` (primary background/header, trust, knowledge)
 
 **Design Direction:** Modern and bold  
-**Logo:** Yellow (`#F5C518`) line-art emblem taken from the school crest — torch, praying hands, open book and the "Discipline, Power & Knowledge" ribbon, without the shield or the school name; transparent background, designed for the blue header/footer. Source: `public/logo.svg`. PNG exports (lettering baked in): `logo.png` (master, 1978×1323), `emblem-web.png` (header/footer), `logo-512.png`, plus `emblem-touch-icon.png` and `emblem-favicon-32.png` on a navy tile. Re-export the PNGs after editing the SVG
+**Logo:** Yellow (`#F5C518`) line-art emblem taken from the school crest — torch, praying hands, open book and the "Discipline, Power & Knowledge" ribbon, without the shield or the school name; transparent background, designed for the blue header/footer. Source: `public/logo.svg`. PNG exports (lettering baked in): `logo.png` (master, 1978×1323), `emblem-web.png` (header/footer), `logo-512.png`, `emblem-favicon-32.png` / `emblem-favicon-64.png` (browser tab icon, transparent), plus `emblem-touch-icon.png` on a navy tile. Re-export the PNGs after editing the SVG
 
 ## Architecture
 
